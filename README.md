@@ -10,4 +10,4 @@ Group Number : 04
 
 Mendoza, John Dominic F.
 
-Segismundo, XXX
+Segismundo, Julio Ismael C.
