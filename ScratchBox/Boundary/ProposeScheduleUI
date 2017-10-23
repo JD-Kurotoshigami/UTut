@@ -1,0 +1,2 @@
+public void ProposeSchedule(User tutor, User tutee, String day, Time start, Time end)
+public void ViewSchedules(User tutor, User tutee) //to see both schedules to see available times
