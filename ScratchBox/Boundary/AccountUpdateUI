@@ -1,6 +1,6 @@
 <<boundary>>
 AccountUpdateUI
 ------------------------
-public void UpdateAccount(AccountInformation a)
+public void UpdateAccount(User u, AccountInformation a)
 
 NOTE: AccountInformation is just a simplified way to express all the information we need
