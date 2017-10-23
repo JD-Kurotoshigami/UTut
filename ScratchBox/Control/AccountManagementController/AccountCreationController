@@ -1,0 +1,3 @@
+public void EnterAccountInformation(AccountInfo a)
+
+NOTE: AccountInfo is just a placeholder for information to store
