@@ -1,2 +1,2 @@
 public void ResetSchedule()
-public void AddSchedule(ClassSched c)
+public void AddSchedule(String day, Time start, Time end)
