@@ -1,1 +1,1 @@
-public void AcceptSchedule(id i, User user)
+public void AcceptSchedule(Tutorial tutorial, User user)
