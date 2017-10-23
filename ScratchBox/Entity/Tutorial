@@ -1,0 +1,9 @@
+
+private string Subject
+private User Tutor
+private User Tutee
+private string Day = {'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', or 'Sat'}
+private int StartTime
+private int EndTime
+--------------------------------
+public void CreateTutorial(User tutor, User tutee, string subject, string day, int start, int end)
