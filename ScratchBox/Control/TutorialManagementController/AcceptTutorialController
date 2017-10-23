@@ -1,0 +1,2 @@
+public void AcceptSchedule(Tutorial tutorial, User user)
+public void RejectSchedule(Tutorial tutorial, User user)
