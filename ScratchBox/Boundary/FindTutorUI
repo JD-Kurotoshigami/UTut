@@ -2,3 +2,4 @@
 FindTutorUI
 -----------------
 public void EnterSearchParameters(String subject)
+public void ViewAccount(User tutor)
