@@ -1,0 +1,10 @@
+<<entity>>
+User
+------------------------
+private int id
+private String name
+private String username
+private char sex
+-------------------------
+public void RegisterUser(User u)
+public void EditUser(User u)
