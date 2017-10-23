@@ -1,0 +1,3 @@
+public void Accept(User tutor, User tutee)
+public void Reject(User tutor, User tutee)
+public void View(User tutee)
