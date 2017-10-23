@@ -1,0 +1,4 @@
+<<boundary>>
+AccountCreationUI
+-----------
+public void EnterAccountInformation(String name, String username, char sex)
