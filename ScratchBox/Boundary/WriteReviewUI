@@ -1,4 +1,4 @@
 <<boundary>>
 WriteReviewUI
 ----------------------
-public void EnterReviewParameters(String review, int rating
+public void EnterReviewParameters(User tutor, User tutee, String review, int rating)
