@@ -1,0 +1,2 @@
+ADD bool Tutorial.tutor_accept DEFAULT null
+ADD bool Tutorial.tutee_accept DEFAULT null
