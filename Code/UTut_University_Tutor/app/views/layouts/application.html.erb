@@ -23,11 +23,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home",   '#' %></li>
+            <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "Log in", '#' %></li>
           </ul>
         </nav>
@@ -35,6 +36,7 @@
     </header>
     <div class="container">
       <%= yield %>
+      <%= debug(params) if Rails.env.development? %>
     </div>
   </body>
 </html>

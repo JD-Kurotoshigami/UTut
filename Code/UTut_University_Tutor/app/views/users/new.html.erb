@@ -3,22 +3,32 @@
 <h1>Sign up</h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="container">
     <%= form_for(@user) do |f| %>
-      <%= f.label :username %>
-      <%= f.text_field :username %>
+      <div>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </div>
 
-      <%= f.label :firstname %>
-      <%= f.text_field :firstname %>
+      <div>
+        <%= f.label :firstname, "First Name" %>
+        <%= f.text_field :firstname %>
+      </div>
 
-      <%= f.label :lastname %>
-      <%= f.text_field :lastname %>
+      <div>
+        <%= f.label :lastname, "Last Name" %>
+        <%= f.text_field :lastname %>
+      </div>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+      <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
+      <div>
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation %>
+      </div>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
