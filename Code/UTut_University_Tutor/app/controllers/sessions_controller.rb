@@ -8,11 +8,11 @@ class SessionsController < ApplicationController
   		#login
   		log_in user
   		redirect_to user
+ 		params[:session][:message] = nil
   	else
   		#error
-  		render 'new'
   		flash.now[:danger] = 'Invalid Username/password combination'
-  		
+  		render 'new'
   	end
   end
 
