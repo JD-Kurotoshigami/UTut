@@ -20,13 +20,21 @@
         <%= f.text_field :lastname %>
       </div>
 
+      <div class="field">
+        <%= f.label :sex, "Sex:" %> <br>
+        <%= f.radio_button :sex, "Male" %>
+        <%= f.label :sex, "Male", :value => "Male"  %> <br>
+        <%= f.radio_button :sex, "Female"%>
+        <%= f.label :sex, "Female", :value => "Female" %>
+      </div>
+
       <div>
         <%= f.label :password %>
         <%= f.password_field :password %>
       </div>
 
       <div>
-        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.label :password_confirmation, "Confirm Password:" %>
         <%= f.password_field :password_confirmation %>
       </div>
 
