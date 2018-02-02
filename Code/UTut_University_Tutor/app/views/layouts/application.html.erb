@@ -29,7 +29,7 @@
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home", root_path %></li>
-            
+
             <% if logged_in? %>
 
             <li><%= link_to "Profile", user_path(current_user)  %></li>
@@ -38,7 +38,7 @@
             <% else %>
 
             <li><%= link_to "Log in", login_path %></li>
-
+            <li><%= link_to "Sign up", signup_path %></li>
             <% end %>
           </ul>
         </nav>
