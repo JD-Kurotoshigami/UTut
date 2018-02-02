@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  get 'sessions/new'
+
   get 'login/new'
 
      get 'users/new'
