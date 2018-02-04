@@ -1,45 +1,58 @@
-<h1>UTut</h1>
-<h1>University Tutor</h1>
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
-
-<div class="row">
-  <div class="container">
-    <%= form_for(@user) do |f| %>
-      <div>
-        <%= f.label :username %>
-        <%= f.text_field :username %>
+<!DOCTYPE html>
+<html> 
+  <head>
+    <title>UTut: Sign Up</title>
+  </head>
+  <body>
+    <div class="container"> 
+      <div class="col-md-8">
+        <h1>UTut: University Tutor</h1>
+        <h2>Find your tutorial needs.</h2>
       </div>
 
-      <div>
-        <%= f.label :firstname, "First Name" %>
-        <%= f.text_field :firstname %>
-      </div>
+      <% provide(:title, 'Sign up') %>
+      <h1>Sign up</h1>
 
-      <div>
-        <%= f.label :lastname, "Last Name" %>
-        <%= f.text_field :lastname %>
-      </div>
+      <div class="col-md-4">
+        <div class="row">
+            <%= form_for(@user) do |f| %>
+              <div>
+                <%= f.label :username %>
+                <%= f.text_field :username %>
+              </div>
 
-      <div class="field">
-        <%= f.label :sex, "Sex:" %> <br>
-        <%= f.radio_button :sex, "Male" %>
-        <%= f.label :sex, "Male", :value => "Male"  %> <br>
-        <%= f.radio_button :sex, "Female"%>
-        <%= f.label :sex, "Female", :value => "Female" %>
-      </div>
+              <div>
+                <%= f.label :firstname, "First Name" %>
+                <%= f.text_field :firstname %>
+              </div>
 
-      <div>
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-      </div>
+              <div>
+                <%= f.label :lastname, "Last Name" %>
+                <%= f.text_field :lastname %>
+              </div>
 
-      <div>
-        <%= f.label :password_confirmation, "Confirm Password:" %>
-        <%= f.password_field :password_confirmation %>
-      </div>
+              <div class="field">
+                <%= f.label :sex, "Sex:" %> <br>
+                <%= f.radio_button :sex, "Male" %>
+                <%= f.label :sex, "Male", :value => "Male"  %> <br>
+                <%= f.radio_button :sex, "Female"%>
+                <%= f.label :sex, "Female", :value => "Female" %>
+              </div>
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
+              <div>
+                <%= f.label :password %>
+                <%= f.password_field :password %>
+              </div>
+
+              <div>
+                <%= f.label :password_confirmation, "Confirm Password:" %>
+                <%= f.password_field :password_confirmation %>
+              </div>
+
+              <%= f.submit "Create my account", class: "btn btn-primary" %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
