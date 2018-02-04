@@ -13,8 +13,21 @@
         <%= link_to "sample app", '#', id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
+<<<<<<< HEAD
             <li><%= link_to "Home",   root_path %></li>
             <li><%= link_to "Log in", '#' %></li>
+=======
+            <li><%= link_to "Home", root_path %></li>
+
+            <% if logged_in? %>
+            <li><%= link_to "Profile", user_path(current_user)  %></li>
+            <li><%= link_to "Log out", logout_path, method: :delete %>
+
+            <% else %>
+            <li><%= link_to "Sign up", signup_path %></li>
+            <li><%= link_to "Log in", login_path %></li>
+            <% end %>
+>>>>>>> 12d18a476041c107fe889eb6372a7025e9dbbb44
           </ul>
         </nav>
       </div>
