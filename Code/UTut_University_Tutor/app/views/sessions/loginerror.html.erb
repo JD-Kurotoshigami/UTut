@@ -1,7 +1,8 @@
 <h1>Login to UTut</h1>
 <% provide(:title, 'Sign in') %>
 <% if logged_in? %>
-     <p> No u </p>
+  You are already logged in. Go back!
+    <%= link_to "Home", root_path %>
 <% else %>
      
      <div class="row">
