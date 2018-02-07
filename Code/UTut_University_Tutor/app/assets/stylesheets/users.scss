@@ -3,4 +3,38 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "bootstrap-sprockets";
-@import "bootstrap";
+@import "bootstrap";	
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+#needs {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  font-weight: normal;
+  color: #777;
+  text-align: center;
+}
+
+#utut1 {
+  font-size: 8em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  color: #6ca6cd;
+  font-weight: bold;
+  text-align: center;
+}
+
+#form{
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #555f61	;
+  font-weight: bold;
+}
+
+#signup {
+  font-size: 3em;
+  color: #fff;
+}
