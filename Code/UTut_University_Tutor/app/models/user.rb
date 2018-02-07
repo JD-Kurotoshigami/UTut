@@ -1,18 +1,24 @@
+# class PasswordValidator < ActiveModel::Validator
+#   def validate(record)
+#     if record.password == nil || record.password[:length] < 5
+#       record.errors[:base] << "len < 5"
+#     end
+#   end
+# end
 class User < ApplicationRecord
      before_save { self.username = username.downcase }
-     validates :username, presence: true, length: { maximum: 50 }
-     validates :firstname, presence: true, length: { maximum: 50 }
-     validates :lastname, presence: true, length: { maximum: 50 }
      VALID_USERNAME_REGEX = /\A(\w)+\z/i
-     VALID_REALNAME_REGEX = /\A[a-zA-Z]([a-zA-Z\ \-])*[^ \d\-]\Z/i
-     validates :username, presence: true, length: { maximum: 255 },
+     VALID_REALNAME_REGEX = /\A([a-zA-Z]([a-zA-Z\ \-])*[^ \d\-])\Z/i
+     validates :username, length: { maximum: 64 },
                        format: { with: VALID_USERNAME_REGEX },
                        uniqueness: { case_sensitive: false }
-     validates :firstname, presence: true, length: { maximum: 255 },
+     validates :firstname, length: { maximum: 64 },
                        format: { with: VALID_REALNAME_REGEX }
-     validates :lastname, presence: true, length: { maximum: 255 },
+     validates :lastname, length: { maximum: 64 },
                        format: { with: VALID_REALNAME_REGEX }
      validates :sex, presence: true
      has_secure_password
-     validates :password, length: { minimum: 6 }
+     validates :password, length: { minimum: 5, message: "is too short" }
+     #validates_with PasswordValidator, fields: [:password]
 end
+
