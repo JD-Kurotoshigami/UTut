@@ -17,7 +17,13 @@
 
                <%= f.submit "Log in", class: "btn btn-primary" %>
                <br>
-               Error Logging In... Incorrect Username-Password Combination
+                <div id="error_explanation">
+                  <div class="alert alert-danger">
+                    <ul>
+                       <li>Invalid Username-Password Combination</li>
+                    </ul>
+                  </div>
+                </div>
       <p> <% session[:message] %> </p>
     <% end %>
   </div>
