@@ -3,8 +3,9 @@
 
 /* universal */
 
-body {
+html body {
   padding-top: 60px;
+  background-color: rgba(0,0,0,1.00);
 }
 
 section {
@@ -67,4 +68,8 @@ footer ul {
 footer ul li {
   float: left;
   margin-left: 15px;
+}
+
+.field {
+  width: 300px;
 }
