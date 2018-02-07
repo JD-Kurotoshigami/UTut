@@ -46,18 +46,21 @@
             </div>
           </div>
 
-            <div class="field">
-              <div>
-                <%= f.label :sex, "Sex:" %> 
+          <div>
+            <%= f.label :sex, "Sex:" %> 
+          </div>
+          <div class="container">
+            <div class="col-md-5">
+              <div class="field">
+                <div class="radio">
+                  <%= f.label :sex, "Male", :value => "Male"  %>
+                </div> 
+                <div class="radio">
+                <%= f.radio_button :sex, "Female"%>
+                <%= f.label :sex, "Female", :value => "Female" %>
               </div>
-              <div class="radio">
-                <%= f.radio_button :sex, "Male" %>
-                <%= f.label :sex, "Male", :value => "Male"  %>
-              </div> 
-              <div class="radio">
-              <%= f.radio_button :sex, "Female"%>
-              <%= f.label :sex, "Female", :value => "Female" %>
-              </div>
+            </div>
+          </div>
           </div>
 
           <div>
