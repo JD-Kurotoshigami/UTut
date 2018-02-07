@@ -1,0 +1,23 @@
+<h1>Login to UTut</h1>
+<% provide(:title, 'Sign in') %>
+<% if logged_in? %>
+     <p> No u </p>
+<% else %>
+     <div class="row">
+          <div class="container">
+          
+               <%= form_for(:session, url: login_path) do |f| %>
+
+               <%= f.label :username %>
+               <%= f.text_field :username, class: 'form-control' %>
+
+               <%= f.label :password %>
+               <%= f.password_field :password, class: 'form-control' %>
+
+               <%= f.submit "Log in", class: "btn btn-primary" %>
+      <p> <% session[:message] %> </p>
+    <% end %>
+  </div>
+</div>
+
+<% end %>
