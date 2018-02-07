@@ -47,11 +47,17 @@
           </div>
 
             <div class="field">
-              <%= f.label :sex, "Sex:" %> <br>
-              <%= f.radio_button :sex, "Male" %>
-              <%= f.label :sex, "Male", :value => "Male"  %> <br>
+              <div>
+                <%= f.label :sex, "Sex:" %> 
+              </div>
+              <div class="radio">
+                <%= f.radio_button :sex, "Male" %>
+                <%= f.label :sex, "Male", :value => "Male"  %>
+              </div> 
+              <div class="radio">
               <%= f.radio_button :sex, "Female"%>
               <%= f.label :sex, "Female", :value => "Female" %>
+              </div>
           </div>
 
           <div>
