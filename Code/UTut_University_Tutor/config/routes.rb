@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
-  
+     get 'sessions/new'
 
-  get 'sessions/new'
-
-  get 'login/new'
+     get 'login/new'
 
      get 'users/new'
 
      resources :tutorials
      resources :users
+     resources :sessions
 
      root 'welcome#index'
      # get 'welcome/index'
@@ -17,7 +16,7 @@ Rails.application.routes.draw do
      # Format is: '/address_path_shown_in_address_bar', to: 'path_to_html#html_name'
      get '/signup', to: 'users#new'
 
-     get '/login', to: 'sessions#new'
+     get '/login', to: 'sessions#login'
      post '/login', to: 'sessions#create'
      delete '/logout', to: 'sessions#destroy'
 

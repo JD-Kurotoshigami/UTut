@@ -16,4 +16,9 @@ module SessionsHelper
 	def logged_in?
 		!current_user.nil?
 	end
+
+	def login_failure_count
+		@log ||= 0
+	end
+
 end

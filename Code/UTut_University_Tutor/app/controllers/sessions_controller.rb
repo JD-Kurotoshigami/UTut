@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   	else
   		#error
   		flash.now[:danger] = 'Invalid Username/password combination'
-  		render 'new'
+  		render 'loginerror'
   	end
   end
 
