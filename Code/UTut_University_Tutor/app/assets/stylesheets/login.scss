@@ -1,0 +1,27 @@
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* typography */
+
+#login{
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  color: #fff	;
+  font-weight: bold;
+  text-align: center;
+}
+
+#char{
+  font-size: 1em;
+  color: #909090;
+}
+
+#button{
+  margin-left: auto;
+  margin-right: auto;
+}
