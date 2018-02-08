@@ -24,24 +24,28 @@
 #    Science, College of Engineering, University
 #    of the Philippines, Diliman for the AY 2017-2018
 
+# Feb 1, 2018: Initial Code and allows user login and logout
+# Feb 6, 2018: Added a feature that displays a notification about incorrect login credentials
 
 class SessionsController < ApplicationController
-  def create
-  	user = User.find_by(username: params[:session][:username].downcase)
-  	if user && user.authenticate(params[:session][:password])
-  		#login
-  		log_in user
-  		redirect_to user
- 		params[:session][:message] = nil
-  	else
-  		#error
-  		flash.now[:danger] = 'Invalid Username/password combination'
-  		render 'loginerror'
-  	end
-  end
-  
-  def destroy
-    log_out
-    redirect_to root_url
-  end
+     # User attempts to login
+     def create
+          user = User.find_by(username: params[:session][:username].downcase)
+          if user && user.authenticate(params[:session][:password])
+          #login success
+               log_in user
+               redirect_to user
+               params[:session][:message] = nil
+          else
+          #login error
+               flash.now[:danger] = 'Invalid Username/password combination'
+               render 'loginerror'
+          end
+     end
+
+     # User logs out
+     def destroy
+          log_out
+          redirect_to root_url
+     end    
 end

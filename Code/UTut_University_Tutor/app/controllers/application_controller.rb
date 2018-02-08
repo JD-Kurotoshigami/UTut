@@ -24,7 +24,8 @@
 #    Science, College of Engineering, University
 #    of the Philippines, Diliman for the AY 2017-2018
 
+# Feb 1, 2018: Included SessionsHelper to allow its functions to be used
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-  include SessionsHelper
+     protect_from_forgery with: :exception
+     include SessionsHelper
 end

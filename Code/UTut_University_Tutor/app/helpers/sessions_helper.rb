@@ -24,27 +24,26 @@
 #    Science, College of Engineering, University
 #    of the Philippines, Diliman for the AY 2017-2018
 
+# Feb 1, 2018: Initial Code and Added Functions for logging in and logging out. 
 module SessionsHelper
 
-	#logs in the given user
-	def log_in(user)
-		session[:username] = user.username
-	end
+     # Logs in the given user by setting the session user as the user
+     def log_in(user)
+          session[:username] = user.username
+     end
+     # Returns the current user
+     def current_user
+          @current_user ||= User.find_by(username: session[:username])
+     end
 
-	def current_user
-		@current_user ||= User.find_by(username: session[:username])
-	end
+     # Logs out the current user by removing it from the session information
+     def log_out
+          session.delete(:username)
+          @current_user = nil
+     end
 
-	def log_out
-		session.delete(:username)
-		@current_user = nil
-	end
-	def logged_in?
-		!current_user.nil?
-	end
-
-	def login_failure_count
-		@log ||= 0
-	end
-
+     # Returns true if there is a logged in user
+     def logged_in?
+          !current_user.nil?
+     end
 end

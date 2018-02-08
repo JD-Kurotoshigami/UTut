@@ -25,6 +25,6 @@
 #    of the Philippines, Diliman for the AY 2017-2018
 
 class WelcomeController < ApplicationController
-  def index
-  end
+     def index
+     end
 end
