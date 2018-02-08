@@ -31,21 +31,21 @@
   You are already logged in. Go back
      <%= link_to "Home", root_path %>!
 <% else %>
-     <div class="row">
-          <div class="container">
-          
-               <%= form_for(:session, url: login_path) do |f| %>
+      <div class="container">
+        <div class="col-md-auto">
+          <div class="row">
+             <%= form_for(:session, url: login_path) do |f| %>
+             <%= f.label :username %>
+             <%= f.text_field :username, class: 'form-control' %>
 
-               <%= f.label :username %>
-               <%= f.text_field :username, class: 'form-control' %>
+             <%= f.label :password %>
+             <%= f.password_field :password, class: 'form-control' %>
 
-               <%= f.label :password %>
-               <%= f.password_field :password, class: 'form-control' %>
-
-               <%= f.submit "Log in", class: "btn btn-primary" %>
-      <p> <% session[:message] %> </p>
-    <% end %>
-  </div>
-</div>
+             <%= f.submit "Log in", class: "btn btn-primary" %>
+         <p> <% session[:message] %> </p>
+      <% end %>
+          </div>
+         </div>
+        </div>
 
 <% end %>

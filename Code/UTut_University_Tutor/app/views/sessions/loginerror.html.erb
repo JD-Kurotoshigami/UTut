@@ -31,9 +31,9 @@
   You are already logged in. Go back!
     <%= link_to "Home", root_path %>
 <% else %>
-     
-     <div class="row">
-          <div class="container">
+      <div class="container">
+       <div class="col-md-auto">
+          <div class="row">
           
                <%= form_for(:session, url: login_path) do |f| %>
 
@@ -54,6 +54,7 @@
                 </div>
       <p> <% session[:message] %> </p>
     <% end %>
+  </div>
   </div>
 </div>
 
