@@ -24,27 +24,30 @@
 #    Science, College of Engineering, University
 #    of the Philippines, Diliman for the AY 2017-2018
 
-# class PasswordValidator < ActiveModel::Validator
-#   def validate(record)
-#     if record.password == nil || record.password[:length] < 5
-#       record.errors[:base] << "len < 5"
-#     end
-#   end
-# end
+#    Segismundo, Julio: Jan 30, 2018: Initial Code 
+#    Segismundo, Julio: Feb 2, 2018: Fixed restrictions on user parameters such as:
+#                             regular expression for valid first and last names
+#                             disabled uniqueness of first and last names
+#    Segismundo, Julio: Feb 7, 2018: Changed maximum length of username, firstname, and lastname
+#                                 modified error message for invalid password due to length
+
 class User < ApplicationRecord
+     # username is saved as lowercase
+     # username can only be of letters and underscores and must be unique
+     # username, firstname, lastname maximum of 64 characters
+     # sex must have a value
+     # password is secure
+     # password minimum of 5 characters
+
      before_save { self.username = username.downcase }
      VALID_USERNAME_REGEX = /\A(\w)+\z/i
      VALID_REALNAME_REGEX = /\A([a-zA-Z]([a-zA-Z\ \-])*[^ \d\-])\Z/i
-     validates :username, length: { maximum: 64 },
-                       format: { with: VALID_USERNAME_REGEX },
-                       uniqueness: { case_sensitive: false }
-     validates :firstname, length: { maximum: 64 },
-                       format: { with: VALID_REALNAME_REGEX }
-     validates :lastname, length: { maximum: 64 },
-                       format: { with: VALID_REALNAME_REGEX }
+     validates :username, length: { maximum: 64 }, format: { with: VALID_USERNAME_REGEX }, uniqueness: { case_sensitive: false }
+     validates :firstname, length: { maximum: 64 }, format: { with: VALID_REALNAME_REGEX }
+     validates :lastname, length: { maximum: 64 }, format: { with: VALID_REALNAME_REGEX }
      validates :sex, presence: true
      has_secure_password
      validates :password, length: { minimum: 5, message: "is too short" }
-     #validates_with PasswordValidator, fields: [:password]
+#validates_with PasswordValidator, fields: [:password]
 end
 

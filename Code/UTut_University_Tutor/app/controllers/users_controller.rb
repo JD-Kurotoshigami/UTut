@@ -24,10 +24,25 @@
 #    Science, College of Engineering, University
 #    of the Philippines, Diliman for the AY 2017-2018
 
+#    File created: Jan 30, 2018
+#    Segismundo, Julio
+#    Serves as a controller for user account related functionalities
+
+
 class UsersController < ApplicationController
+
+     # Index
+     # Feb 7, 2018
+     # Redirects user to home page if url /users is accessed since the page does not exist.
      def index
           redirect_to root_url
      end
+
+     # Show
+     # Jan 30, 2018
+     # Shows the user's profile when accessed
+     # Feb 7, 2018
+     # Redirects user to home page if profile does not exist.
      def show
           if User.exists?(params[:id])
                @user = User.find(params[:id])
@@ -36,6 +51,11 @@ class UsersController < ApplicationController
           end
      end
 
+     # New
+     # Jan 30, 2018
+     # Allows sign up functionality
+     # Feb 7, 2018
+     # Redirects user to home page if already logged in
      def new
           if logged_in?
                redirect_to root_url
@@ -44,6 +64,10 @@ class UsersController < ApplicationController
           end
      end
      
+     # Create
+     # Jan 30, 2018
+     # Creates a new user and saves it to the database. User is redirected to their profile
+     # A failure in sign up would render the same page.
      def create
           @user = User.new(user_params)
           if @user.save
@@ -56,6 +80,9 @@ class UsersController < ApplicationController
 
      private
 
+     # User_Params
+     # Jan 30, 2018
+     # Parameters passed when creating a new user
      def user_params
           params.require(:user).permit(:username, :firstname, :lastname, :sex, :password, :password_confirmation)
      end
