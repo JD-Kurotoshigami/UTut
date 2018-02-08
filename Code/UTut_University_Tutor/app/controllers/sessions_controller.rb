@@ -24,26 +24,32 @@
 #    Science, College of Engineering, University
 #    of the Philippines, Diliman for the AY 2017-2018
 
-# Feb 1, 2018: Initial Code and allows user login and logout
-# Feb 6, 2018: Added a feature that displays a notification about incorrect login credentials
+# Mendoza JD: Feb 1, 2018: Initial Code and allows user login and logout
+# Mendoza JD: Feb 6, 2018: Added a feature that displays a notification about incorrect login credentials
+
+# File Created: Feb 1, 2018
+# Mendoza JD
+# Serves as a controller for sessions related functionalities
 
 class SessionsController < ApplicationController
-     # User attempts to login
+
+     # Create
+     # Feb 1 2018
+     # Attempts to log in a user
      def create
-          user = User.find_by(username: params[:session][:username].downcase)
-          if user && user.authenticate(params[:session][:password])
-          #login success
+          #The user to log in
+          user = User.find_by(username: params[:session][:username].downcase) 
+          if user && user.authenticate(params[:session][:password]) #login succes
                log_in user
                redirect_to user
-               params[:session][:message] = nil
-          else
-          #login error
-               flash.now[:danger] = 'Invalid Username/password combination'
+          else #login error
                render 'loginerror'
           end
      end
 
-     # User logs out
+     # Destroy
+     # Feb 1 2018
+     # Logs out the user and redirects to the home page
      def destroy
           log_out
           redirect_to root_url

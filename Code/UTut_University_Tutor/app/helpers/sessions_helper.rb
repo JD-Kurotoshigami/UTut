@@ -24,25 +24,40 @@
 #    Science, College of Engineering, University
 #    of the Philippines, Diliman for the AY 2017-2018
 
-# Feb 1, 2018: Initial Code and Added Functions for logging in and logging out. 
+# Mendoza JD: Feb 1, 2018: Initial Code and Added Functions for logging in and logging out. 
+
+# File Created: Feb 1, 2018
+# Mendoza JD
+# Serves as a helper for sessions related functionalities
+
 module SessionsHelper
 
-     # Logs in the given user by setting the session user as the user
+     # Log_in
+     # Feb 1 2018
+     # Attempts to log in a user
+     # User: The user to log in
      def log_in(user)
           session[:username] = user.username
      end
-     # Returns the current user
+
+     # Current_User
+     # Feb 1 2018
+     # Returns the user currently logged in
      def current_user
           @current_user ||= User.find_by(username: session[:username])
      end
 
-     # Logs out the current user by removing it from the session information
+     # Log_out
+     # Feb 1 2018
+     # Logs out the current user
      def log_out
           session.delete(:username)
           @current_user = nil
      end
 
-     # Returns true if there is a logged in user
+     # Logged_in?
+     # Feb 1 2018
+     # Returns true if there is a logged in user, otherwise false
      def logged_in?
           !current_user.nil?
      end
