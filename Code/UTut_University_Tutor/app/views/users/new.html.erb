@@ -38,87 +38,87 @@
 -->
 
 <div class="container"> 
-  <div class="col-md-8">
-    <h1 id="utut1">UTut: University Tutor</h1>
-    <h2 id="needs">Find your tutorial needs.</h2>
-  </div>
+     <div class="col-md-8">
+          <h1 id="utut1">UTut: University Tutor</h1>
+          <h2 id="needs">Find your tutorial needs.</h2>
+     </div>
 
-  <% provide(:title, 'Sign up') %>
+     <% provide(:title, 'Sign up') %>
   
-  <h1 id="signup">SIGN UP</h1>
+     <h1 id="signup">SIGN UP</h1>
 
-  <div class="col-md-4">
-    <div class="row", id="form">
-        <%= form_for(@user) do |f| %>
-          <% if @user.errors.any? %>
-            <div id="error_explanation">
-              <div class="alert alert-danger">
-                Invalid sign up form
-                <ul>
-                  <% @user.errors.full_messages.each do |msg| 
-                    if msg != "Password can't be blank"%>
-                   <li><%= msg %></li>
-                   <%end%>
-                 <% end %>
-                </ul>
-              </div>
-            </div>
-          <% end %>
-          <div>
-            <%= f.label :username %>
-            <div class="col">
-              <%= f.text_field :username %>
-            </div>
-          </div>
+     <div class="col-md-4">
+          <div class="row", id="form">
+               <%= form_for(@user) do |f| %>
+               <% if @user.errors.any? %>
+                    <div id="error_explanation">
+                         <div class="alert alert-danger">
+                              Invalid sign up form
+                              <ul>
+                                   <% @user.errors.full_messages.each do |msg| 
+                                        if msg != "Password can't be blank"%>
+                                             <li><%= msg %></li>
+                                        <%end%>
+                                   <% end %>
+                              </ul>
+                         </div>
+                    </div>
+               <% end %>
+               <div>
+                    <%= f.label :username %>
+                    <div class="col">
+                         <%= f.text_field :username %>
+                    </div>
+               </div>
 
-          <div>
-            <%= f.label :firstname, "First Name" %>
-            <div class="col">
-              <%= f.text_field :firstname %>
-            </div>
-          </div>
+               <div>
+                    <%= f.label :firstname, "First Name" %>
+                    <div class="col">
+                         <%= f.text_field :firstname %>
+                    </div>
+               </div>     
 
-          <div>
-            <%= f.label :lastname, "Last Name" %>
-            <div class="col">
-              <%= f.text_field :lastname %>
-            </div>
-          </div>
+               <div>
+                    <%= f.label :lastname, "Last Name" %>
+                    <div class="col">
+                         <%= f.text_field :lastname %>
+                    </div>
+               </div>
 
-          <div>
-            <%= f.label :sex, "Sex:" %> 
-          </div>
-          <div class="container">
-            <div class="col-md-5">
-              <div class="field">
-                <div class="radio">
-                  <%= f.radio_button :sex, "Male"%>
-                  <%= f.label :sex, "Male", :value => "Male"  %>
-                </div> 
-                <div class="radio">
-                <%= f.radio_button :sex, "Female"%>
-                <%= f.label :sex, "Female", :value => "Female" %>
-              </div>
-            </div>
-          </div>
-          </div>
+               <div>
+                    <%= f.label :sex, "Sex:" %> 
+               </div>
+               <div class="container">
+                    <div class="col-md-5">
+                         <div class="field">
+                              <div class="radio">
+                                   <%= f.radio_button :sex, "Male"%>
+                                   <%= f.label :sex, "Male", :value => "Male"  %>
+                              </div> 
+                              <div class="radio">
+                                   <%= f.radio_button :sex, "Female"%>
+                                   <%= f.label :sex, "Female", :value => "Female" %>
+                              </div>
+                         </div>
+                    </div>
+               </div>
 
-          <div>
-            <%= f.label :password %>
-            <div class="col">
-              <%= f.password_field :password %>
-            </div>
-          </div>
+               <div>
+                    <%= f.label :password %>
+                    <div class="col">
+                         <%= f.password_field :password %>
+                    </div>
+               </div>
 
-          <div>
-            <%= f.label :password_confirmation, "Confirm Password:" %>
-            <div class="col">
-              <%= f.password_field :password_confirmation %>
-            </div>
+               <div>
+                    <%= f.label :password_confirmation, "Confirm Password:" %>
+                    <div class="col">
+                         <%= f.password_field :password_confirmation %>
+                    </div>
+               </div>
+               <br>
+                    <%= f.submit "Create my account", class: "btn btn-primary" %>
+               <% end %>
           </div>
-          <br>
-           <%= f.submit "Create my account", class: "btn btn-primary" %>
-        <% end %>
-    </div>
-  </div>
+     </div>
 </div>

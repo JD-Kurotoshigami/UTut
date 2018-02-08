@@ -36,22 +36,21 @@
 -->
 
 <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <nav>
-          <%= link_to "UTut", root_path, id: "logo" %>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home", root_path %></li>
+     <div class="container">
+          <nav>
+               <%= link_to "UTut", root_path, id: "logo" %>
+               <ul class="nav navbar-nav navbar-right">
+                    <li><%= link_to "Home", root_path %></li>
 
-            <% if logged_in? %>
-            <li><%= link_to "Profile", user_path(current_user)  %></li>
-            <li><%= link_to "Log out", logout_path, method: :delete %>
+                    <% if logged_in? %>
+                    <li><%= link_to "Profile", user_path(current_user)  %></li>
+                    <li><%= link_to "Log out", logout_path, method: :delete %>
 
-            <% else %>
-            <li><%= link_to "Sign up", signup_path %></li>
-            <li><%= link_to "Log in", login_path %></li>
-            <% end %>
-          </ul>
-        </nav>
-      </div>
-    </header>  
-    </div>
+                    <% else %>
+                    <li><%= link_to "Sign up", signup_path %></li>
+                    <li><%= link_to "Log in", login_path %></li>
+                    <% end %>
+               </ul>
+          </nav>
+     </div>
+</header>  

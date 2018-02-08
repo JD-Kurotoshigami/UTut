@@ -40,34 +40,34 @@
 <h1 id="login">LOG-IN</h1>
 <% provide(:title, 'Sign in') %>
 <% if logged_in? %>
-  You are already logged in. Go back!
-    <%= link_to "Home", root_path %>
+     You are already logged in. Go back!
+     <%= link_to "Home", root_path %>
 <% else %>
 
-      <div class="container">
-        <div class="col-md-4"></div>
-        <div class="col-md-4 offset-md-3">
-          <div class="row justify-content-center">
-             <%= form_for(:session, url: login_path) do |f| %>
-             <%= f.label :username, id: 'char' %>
-             <%= f.text_field :username, class: 'form-control' %>
+     <div class="container">
+          <div class="col-md-4"></div>
+          <div class="col-md-4 offset-md-3">
+               <div class="row justify-content-center">
+                    <%= form_for(:session, url: login_path) do |f| %>
+                    <%= f.label :username, id: 'char' %>
+                    <%= f.text_field :username, class: 'form-control' %>
 
-             <%= f.label :password, id:'char' %>
-             <%= f.password_field :password, class: 'form-control' %>
+                    <%= f.label :password, id:'char' %>
+                    <%= f.password_field :password, class: 'form-control' %>
 
-             <%= f.submit "Log in", class: "btn btn-primary" %>
-             <br>
-                <div id="error_explanation">
-                  <div class="alert alert-danger">
-                    <ul>
-                       <li>Invalid Username-Password Combination</li>
-                    </ul>
-                  </div>
-                </div>
-         <p> <% session[:message] %> </p>
-      <% end %>
+                    <%= f.submit "Log in", class: "btn btn-primary" %>
+                    <br>
+                    <div id="error_explanation">
+                         <div class="alert alert-danger">
+                              <ul>
+                                   <li>Invalid Username-Password Combination</li>
+                              </ul>
+                         </div>
+                    </div>
+                    <p> <% session[:message] %> </p>
+                    <% end %>
+               </div>
           </div>
-         </div>
-        </div>
-        <div class="col-md-4"></div>
+     </div>
+     <div class="col-md-4"></div>
 <% end %>
