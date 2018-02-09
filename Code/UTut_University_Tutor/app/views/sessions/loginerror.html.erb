@@ -54,8 +54,10 @@
 
                     <%= f.label :password, id:'char' %>
                     <%= f.password_field :password, class: 'form-control' %>
-                    <div class="center">
-                         <%= f.submit "Log in", class: "btn btn-primary" %>
+                    <div class="form-group row">
+                         <div class="col-sm-6" style="margin-left:25%; margin-top: 10px;">
+                              <%= f.submit "Log in", class: "form-control btn btn-primary" %>
+                         </div>
                     </div>
                     <br>
                     <div id="error_explanation">

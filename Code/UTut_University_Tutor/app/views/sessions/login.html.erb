@@ -53,11 +53,13 @@
                     <%= f.text_field :username, class: 'form-control' %>
      
                     <%= f.label :password, id:'char' %>
-                    <div class="center">
-                         <%= f.password_field :password, class: 'form-control' %>
-                         <%= f.submit "Log in", class: "btn btn-primary" %>
-                         <p> <% session[:message] %> </p>
-                         <% end %>
+                    <%= f.password_field :password, class: 'form-control' %>
+                    <div class="form-group row">
+                         <div class="col-sm-6" style="margin-left:25%; margin-top: 10px;">
+                              <%= f.submit "Log in", class: "form-control btn btn-primary" %>
+                              <p> <% session[:message] %> </p>
+                              <% end %>
+                         </div>
                     </div>
                </div>
           </div>
