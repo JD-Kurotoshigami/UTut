@@ -40,7 +40,7 @@ class User < ApplicationRecord
      # password minimum of 5 characters
 
      before_save { self.username = username.downcase }
-     VALID_USERNAME_REGEX = /\A(\w)+\z/i
+     VALID_USERNAME_REGEX = /\A([0-9]){7,}\z/i
      VALID_REALNAME_REGEX = /\A([a-zA-Z]([a-zA-Z\ \-])*[^ \d\-])\Z/i
      validates :username, length: { maximum: 64 }, format: { with: VALID_USERNAME_REGEX }, uniqueness: { case_sensitive: false }
      validates :firstname, length: { maximum: 64 }, format: { with: VALID_REALNAME_REGEX }
