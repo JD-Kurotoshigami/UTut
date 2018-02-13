@@ -26,6 +26,7 @@
 
 # Mendoza JD: Feb 1, 2018: Initial Code and allows user login and logout
 # Mendoza JD: Feb 6, 2018: Added a feature that displays a notification about incorrect login credentials
+# Mendoza JD: Feb 13, 2018: Error Handling now determines the type of error
 
 # File Created: Feb 1, 2018
 # Mendoza JD
@@ -39,11 +40,21 @@ class SessionsController < ApplicationController
      def create
           #The user to log in
           user = User.find_by(username: params[:session][:username].downcase) 
-          if user && user.authenticate(params[:session][:password]) #login succes
-               log_in user
-               redirect_to user
-          else #login error
-               render 'loginerror'
+          if user
+               #User Exists
+               if user.authenticate(params[:session][:password])
+                    # Log In Success
+                    log_in user
+                    redirect_to user
+               else
+                    #Incorrect Password
+                    error_type "Incorrect Password"
+                    render 'login'
+               end
+          else
+               #User does not exist
+               error_type "User does not exist"
+               render 'login'
           end
      end
 

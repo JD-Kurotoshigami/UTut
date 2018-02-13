@@ -25,6 +25,7 @@
 #    of the Philippines, Diliman for the AY 2017-2018
 
 # Mendoza JD: Feb 1, 2018: Initial Code and Added Functions for logging in and logging out. 
+# Mendoza JD: Feb 13, 2018: Added Code for Error Setting
 
 # File Created: Feb 1, 2018
 # Mendoza JD
@@ -38,6 +39,7 @@ module SessionsHelper
      # User: The user to log in
      def log_in(user)
           session[:username] = user.username
+          session[:error] = nil
      end
 
      # Current_User
@@ -60,5 +62,19 @@ module SessionsHelper
      # Returns true if there is a logged in user, otherwise false
      def logged_in?
           !current_user.nil?
+     end
+
+     # Has_Error?
+     # Feb 13 2018
+     # Determines if there is an error logging in
+     def has_error?
+          !session[:error] .nil?
+     end
+     
+     # Error_Type
+     # Feb 13 2018
+     # Sets the Error Type
+     def error_type(err)
+          session[:error]=err
      end
 end
