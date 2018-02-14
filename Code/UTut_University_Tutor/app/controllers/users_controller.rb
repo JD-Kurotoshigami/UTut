@@ -46,6 +46,7 @@ class UsersController < ApplicationController
      def show
           if User.exists?(params[:id])
                @user = User.find(params[:id])
+               render 'new'
           else
                redirect_to root_url
           end

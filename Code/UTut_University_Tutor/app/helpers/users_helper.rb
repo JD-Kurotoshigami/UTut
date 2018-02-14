@@ -24,12 +24,60 @@
 #    Science, College of Engineering, University
 #    of the Philippines, Diliman for the AY 2017-2018
 
+# JD Mendoza, Feb 14, 2018, Added User Information Getters
+
+# File Created: Feb 1, 2018 (?)
+# Segismundo Jules
+# Serves as a helper for user related functionalities
+
 module UsersHelper
-	class PasswordValidator < ActiveModel::Validator
-		def validate(record)
-			if record.length < 5
-				record.errors[:base] << "len < 5"
-			end
-		end
-	end
+     class PasswordValidator < ActiveModel::Validator
+          def validate(record)
+               if record.length < 5
+                    record.errors[:base] << "len < 5"
+               end
+          end
+
+     end
+
+     # get_sid
+     # Feb 14 2018
+     # gets the user's student id
+     # user - the user to get the sid from
+     def get_sid(user)
+          user.username
+     end
+
+     # get_full_name
+     # Feb 14 2018
+     # gets the user's full name
+     # user - the user to get the name from
+     def get_full_name(user)
+          user.lastname + ", " + user.firstname
+     end
+
+     # get_sex
+     # Feb 14 2018
+     # gets the user's sex
+     # user - the user to get the ssex from
+     def get_sex(user)
+          user.sex
+     end
+
+     # get_description
+     # Feb 14 2018
+     # gets the user's profile description
+     # user - the user to get the description from
+     def get_description(user)
+          if user.description == nil
+               "No Description"
+          else
+               user.description
+          end
+     end
+
+     # Jules do your shit here to get the password
+     def get_password(user)
+          nil 
+     end
 end
