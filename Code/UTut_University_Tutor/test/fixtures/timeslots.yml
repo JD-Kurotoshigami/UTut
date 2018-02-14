@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_hr: 
+  start_min: 
+  end_hr: 
+  end_min: 
+
+two:
+  start_hr: 
+  start_min: 
+  end_hr: 
+  end_min: 

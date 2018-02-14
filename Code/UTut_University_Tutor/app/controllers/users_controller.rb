@@ -142,6 +142,6 @@ class UsersController < ApplicationController
      # Feb 14, 2018
      # Parameters passed when editing user profile
      def edit_params
-          params.require(:user).permit(:description, :password, :password_confirmation)
+          params.require(:user).permit(:description, :old_password, :password, :password_confirmation)
      end
 end

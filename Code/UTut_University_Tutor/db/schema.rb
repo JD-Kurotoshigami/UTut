@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180130145234) do
+ActiveRecord::Schema.define(version: 20180214070950) do
+
+  create_table "timeslots", force: :cascade do |t|
+    t.integer "start_hr"
+    t.integer "start_min"
+    t.integer "end_hr"
+    t.integer "end_min"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
