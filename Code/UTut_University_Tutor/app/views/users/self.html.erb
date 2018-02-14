@@ -36,7 +36,6 @@
      <% provide(:title, "User Profile") %>
 
      <div class="col-md-4">
-<<<<<<< HEAD
           <div class="row", id="form">
                <%= form_for(@user) do |f| %>
                     <div>
@@ -56,38 +55,12 @@
                          <%= ": "+(get_description @user) %>
                     </div>
                     <div>
-                         <%= link_to "Update Profile!", root_path, class: "btn btn-lg" %>
+                         <%= link_to "Update Profile!", edit_user_path, class: "btn btn-lg" %>
                     </div>
                     <div>
                          <%= link_to "Show Schedule (Placeholder Button)", root_path, class: "btn btn-lg" %>
                     </div>
                <% end %>
           </div>
-=======
-     	<div class="row", id="form">
-			<%= form_for(@user) do |f| %>
-			<div>
-				<%= f.label "Student Number"%>
-				<%= ": "+(get_sid @user)%>
-			</div>
-			<div>
-				<%= f.label "Name"%>
-				<%= ": "+(get_full_name @user).titleize %>
-			</div>
-			<div>
-				<%= f.label "Sex"%>
-				<%= ": "+(get_sex @user)%>
-			</div>
-			<div>
-				<%= f.label "Description"%>
-				<%= ": "+(get_description @user) %>
-			</div>
-			<div>
-				<%= link_to "Update Profile!", edit_user_path, class: "btn btn-lg" %>
-			</div>
-			<% end %>
-     	</div>
->>>>>>> 8519ad06626b8d3da84369261f40ff76d6289cd9
      </div>
-
 </div>
