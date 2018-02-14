@@ -40,10 +40,6 @@
         <div class="row", id="form">
             <%= form_for(@user) do |f| %>
             <div>
-                <%= f.label "Student Number"%>
-                <%= ": "+(get_sid @user)%>
-            </div>
-            <div>
                 <%= f.label "Name"%>
                 <%= ": "+(get_full_name @user).titleize %>
             </div>
@@ -55,14 +51,8 @@
                 <%= f.label "Description"%>
                 <%= ": "+(get_description @user) %>
             </div>
-            <div>
-                <%= link_to "Update Profile!", root_path, class: "btn btn-lg" %>
-            </div>
             <% end %>
         </div>
      </div>
 
 </div>
-
-<br>
-this is NOT self
