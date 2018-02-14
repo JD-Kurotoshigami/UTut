@@ -5,10 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-@user = User.new(username: 'cs145xyhonor', firstname: 'CS 145', lastname: 'MXY HONOR', sex: 'Male', password: 'mantika2log', password_confirmation: 'mantika2log')
-@user.save
-@user = User.new(username: 'event1', firstname: 'Event', lastname: 'Juan', sex: 'Male', password: 'criticalisaw', password_confirmation: 'critical_isaw')
-@user.save
-@user = User.new(username: 'cs165htuv_luntian', firstname: 'One Six Five', lastname: 'Luntian', sex: 'Female', password: 'helicop1', password_confirmation: 'helicop1')
-@user.save
+@user = User.create(username: '000000000', firstname: 'Event', lastname: 'One', password: 'criticalisaw', password_confirmation: 'criticalisaw').save(validate: false)
+@user = User.create(username: '201500002', firstname: 'Wilson', lastname: 'Tan', password: 'cs145', password_confirmation: 'cs145').save(validate: false)
+@user = User.create(username: '201500001', firstname: 'Juan Felipe', lastname: 'Coronel', password: '123456', password_confirmation: '123456').save(validate: false)
