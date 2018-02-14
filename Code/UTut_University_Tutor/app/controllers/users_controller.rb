@@ -28,10 +28,16 @@
 #    Segismundo, Julio
 #    Serves as a controller for user account related functionalities
 
+#    Jules Segismundo, 02/14/18: added logged_in_user, correct_user, edit, update, and edit_params
+
 
 class UsersController < ApplicationController
      before_action :logged_in_user, only: [:edit, :update]
      before_action :correct_user,   only: [:edit, :update]
+
+     # logged_in_user
+     # Feb 14, 2018
+     # Checks if user is logged in 
      def logged_in_user
           unless logged_in?
                store_location
@@ -40,6 +46,9 @@ class UsersController < ApplicationController
           end
      end
 
+     # correct_user
+     # Feb 14, 2018
+     # checks if the user in question is the same user
      def correct_user
           if User.exists?(params[:id])
                @user = User.find(params[:id])
@@ -86,10 +95,16 @@ class UsersController < ApplicationController
           end
      end
 
+     # edit
+     # Feb 14, 2018
+     # Checks user
      def edit
           @user = User.find(params[:id])
      end
 
+     # update
+     # Feb 14, 2018
+     # changes user attributes
      def update
           @user = User.find(params[:id])
           if @user.update_attributes(edit_params)
@@ -123,6 +138,9 @@ class UsersController < ApplicationController
           params.require(:user).permit(:username, :firstname, :lastname, :sex, :password, :password_confirmation)
      end
 
+     # edit_params
+     # Feb 14, 2018
+     # Parameters passed when editing user profile
      def edit_params
           params.require(:user).permit(:description, :password, :password_confirmation)
      end

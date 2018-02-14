@@ -53,7 +53,7 @@ module SessionsHelper
      # Feb 14 2018
      # tests if the current user is the user
      def current_user?(user)
-          user == current_user
+          user == @current_user
      end
 
      # Log_out
