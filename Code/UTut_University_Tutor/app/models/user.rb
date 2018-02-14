@@ -47,7 +47,7 @@ class User < ApplicationRecord
      validates :lastname, length: { maximum: 64 }, format: { with: VALID_REALNAME_REGEX }
      validates :sex, presence: true
      has_secure_password
-     validates :password, length: { minimum: 5, message: "is too short" }
+     validates :password, length: { minimum: 5, message: "is too short" }, allow_nil: true
 #validates_with PasswordValidator, fields: [:password]
 end
 
