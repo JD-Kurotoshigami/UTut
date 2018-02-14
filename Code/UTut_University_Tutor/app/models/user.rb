@@ -30,6 +30,7 @@
 #                             disabled uniqueness of first and last names
 #    Segismundo, Julio: Feb 7, 2018: Changed maximum length of username, firstname, and lastname
 #                                 modified error message for invalid password due to length
+#    Segismundo, Julio: Feb 14, 2018: Added allow_nil: true for password validation (this is for updating user profile)
 
 class User < ApplicationRecord
      # username is saved as lowercase
