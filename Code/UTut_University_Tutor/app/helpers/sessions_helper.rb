@@ -49,6 +49,13 @@ module SessionsHelper
           @current_user ||= User.find_by(username: session[:username])
      end
 
+     # Current User?
+     # Feb 14 2018
+     # tests if the current user is the user
+     def current_user?(user)
+          user == current_user
+     end
+
      # Log_out
      # Feb 1 2018
      # Logs out the current user

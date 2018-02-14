@@ -30,7 +30,24 @@
 
 
 class UsersController < ApplicationController
+     before_action :logged_in_user, only: [:edit, :update]
+     before_action :correct_user,   only: [:edit, :update]
+     def logged_in_user
+          unless logged_in?
+               store_location
+               flash[:danger] = "Please log in."
+               redirect_to login_url
+          end
+     end
 
+     def correct_user
+          if User.exists?(params[:id])
+               @user = User.find(params[:id])
+               redirect_to root_url unless current_user?(@user)
+          else
+               redirect_to root_url
+          end
+     end
      # Index
      # Feb 7, 2018
      # Redirects user to home page if url /users is accessed since the page does not exist.
@@ -71,7 +88,11 @@ class UsersController < ApplicationController
 
      def edit
           @user = User.find(params[:id])
-          if @user.update_attributes(user_params)
+     end
+
+     def update
+          @user = User.find(params[:id])
+          if @user.update_attributes(edit_params)
                flash[:success] = "User profile updated"
                redirect_to @user
           else
@@ -100,5 +121,9 @@ class UsersController < ApplicationController
      # Parameters passed when creating a new user
      def user_params
           params.require(:user).permit(:username, :firstname, :lastname, :sex, :password, :password_confirmation)
+     end
+
+     def edit_params
+          params.require(:user).permit(:description, :password, :password_confirmation)
      end
 end
