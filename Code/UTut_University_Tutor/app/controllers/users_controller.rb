@@ -46,7 +46,11 @@ class UsersController < ApplicationController
      def show
           if User.exists?(params[:id])
                @user = User.find(params[:id])
-               render 'new'
+               if logged_in? && @user.id == @current_user.id
+                    render 'self'
+               else
+                    render 'show'
+               end
           else
                redirect_to root_url
           end
