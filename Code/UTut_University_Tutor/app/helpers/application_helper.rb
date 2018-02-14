@@ -25,4 +25,16 @@
 #    of the Philippines, Diliman for the AY 2017-2018
 
 module ApplicationHelper
+     def normalize_time(hr, mi)
+          _hr=hr
+          _mi=mi
+          if mi>=60
+               _hr += mi/60
+               _mi %= 60
+          end
+          if hr>=24
+               _hr %= 24
+          end
+          format("%02d",_hr.to_s) + ":" + format("%02d",_mi.to_s)
+     end
 end

@@ -30,6 +30,9 @@
 # Segismundo Jules
 # Serves as a helper for user related functionalities
 
+
+# I need a table `TimeSlot(id, start_hr, start_min, end_hr, end_min)`
+
 module UsersHelper
      class PasswordValidator < ActiveModel::Validator
           def validate(record)
