@@ -83,4 +83,13 @@ module UsersHelper
      def get_password(user)
           nil 
      end
+
+     # get_offered_tutorials
+     # Feb 15 2018
+     # gets a list of the tutorials offered by the user
+     # User - the user offering the tutorials
+     def get_offered_tutorials(user)
+          # put algo here. this should return a list
+          "Placeholder"
+     end
 end
