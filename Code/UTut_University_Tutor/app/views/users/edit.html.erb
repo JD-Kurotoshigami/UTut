@@ -35,16 +35,12 @@
 
 
 <div class="container"> 
-     <div class="col-md-8">
-          <h1 id="utut1">EDIT STUFF</h1>
-          <h2 id="needs">Find your tutorial needs.</h2>
-     </div>
 
      <% provide(:title, 'Sign up') %>
   
-     <h1 id="signup">UPDATE PROFILE</h1>
+     <h1 class="center" id="signup">UPDATE PROFILE</h1>
 
-     <div class="col-md-4">
+     <div class="center">
           <div class="row", id="form">
                <%= form_for(@user) do |f| %>
                <% if @user.errors.any? %>
@@ -64,7 +60,7 @@
                <div>
                     <%= f.label :description, "Description" %>
                     <div class="col">
-                         <%= f.text_field :description %>
+                         <%= f.text_area :description %>
                     </div>
                </div>     
                
