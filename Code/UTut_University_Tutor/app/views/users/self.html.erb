@@ -35,12 +35,11 @@
 -->
 <div class="container">
      <% provide(:title, "User Profile") %>
-
-     <div class="col-md-4">
           <div class="row", id="form">
                <%= form_for(@user) do |f| %>
                <div class="container">
-                    <div class="col-md-4", id="deets">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5", id="deets">
                     <div>
                          <%= f.label "Student Number"%>
                          <%= ": "+(get_sid @user)%>
@@ -53,16 +52,18 @@
                          <%= f.label "Sex"%>
                          <%= ": "+(get_sex @user)%>
                     </div>
+                </div>
+                <div class="col-md-5", id="deets">
                     <div>
                          <%= f.label "Description"%>
                          <%= ": "+(get_description @user) %>
                     </div>
-                    <div>
-                         <%= link_to "Update Profile!", edit_user_path, class: "btn btn-lg" %>
-                    </div>
                 </div>
-                <div class="col-md-3"></div>
-                        <div class="col-md-4">
+                </div>
+            </div>
+                <div class="container">
+                    <div class="col-md-1"></div>
+                        <div class="col-md-5">
                          <%_hr=7 %>
                          <%_min=0 %>
                          <table>
@@ -70,7 +71,32 @@
                                    <th>Time</th>
                                    <th>Subject</th>
                               </tr>
-                         <% while _hr < 22 do %>
+                         <% while _hr < 15 do %>
+                             <% _min=0 %>
+                             <% while _min < 60 do %>
+                                <tr>
+                                    <td>
+                                        <%= (normalize_time _hr, _min)%>
+                                        <% _min += 30 %>
+                                        <%= "- "+(normalize_time _hr, _min)%>
+                                        <br> 
+                                    </td>
+                                    <td></td>
+                                  </tr>
+                            <%end%> 
+                            <% _hr+=1 %>
+                        <%end%>
+                        </table>
+                 </div>
+                 <div class="col-md-5">
+                         <%_hr=15 %>
+                         <%_min=0 %>
+                         <table>
+                              <tr>
+                                   <th>Time</th>
+                                   <th>Subject</th>
+                              </tr>
+                         <% while _hr < 23 do %>
                              <% _min=0 %>
                              <% while _min < 60 do %>
                                 <tr>
@@ -90,6 +116,10 @@
                          <%= link_to "Show Schedule (Placeholder Button)", root_path, class: "btn btn-lg" %>
                  </div>
              </div>
+             </div>
+                    </div>
+                    <div>
+                         <%= link_to "Update Profile!", edit_user_path, class: "btn btn-lg" %>
                     </div>
                <% end %>
           </div>
