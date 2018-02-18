@@ -27,6 +27,7 @@
 
 <!-- 
      JD Mendoza, 02/14/18: file creation and initial code
+     Jade De Guzman, 02/18/18: table
 -->
 
 <!-- 
@@ -38,6 +39,8 @@
      <div class="col-md-4">
           <div class="row", id="form">
                <%= form_for(@user) do |f| %>
+               <div class="container">
+                    <div class="col-md-4", id="deets">
                     <div>
                          <%= f.label "Student Number"%>
                          <%= ": "+(get_sid @user)%>
@@ -57,21 +60,35 @@
                     <div>
                          <%= link_to "Update Profile!", edit_user_path, class: "btn btn-lg" %>
                     </div>
-                    <div>
-                        <%_hr=0 %>
-                        <%_min=0 %>
-                        <% while _hr < 24 do %>
-                            <% _min=0 %>
-                            <% while _min < 60 do %>
-                                <%= (normalize_time _hr, _min)%> 
-                                <% _min += 15 %>
-                                <%= "- "+(normalize_time _hr, _min)%> 
-                                <br>
+                </div>
+                        <div class="col-md-7 offset-md-3">
+                         <%_hr=7 %>
+                         <%_min=0 %>
+                         <table>
+                              <tr>
+                                   <th>Time</th>
+                                   <th>Subject</th>
+                              </tr>
+                         <% while _hr < 22 do %>
+                             <% _min=0 %>
+                             <% while _min < 60 do %>
+                                <tr>
+                                    <td>
+                                        <%= (normalize_time _hr, _min)%>
+                                        <% _min += 30 %>
+                                        <%= "- "+(normalize_time _hr, _min)%>
+                                        <br> 
+                                    </td>
+                                    <td></td>
+                                  </tr>
                             <%end%> 
                             <% _hr+=1 %>
                         <%end%>
+                        </table>
                             <% _min=0 %>
                          <%= link_to "Show Schedule (Placeholder Button)", root_path, class: "btn btn-lg" %>
+                 </div>
+             </div>
                     </div>
                <% end %>
           </div>

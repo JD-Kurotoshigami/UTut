@@ -1,0 +1,34 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    align: center;
+}
+
+th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    color: #6ca6cd;
+}
+
+td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+#deets {
+	color: #fff;
+}
