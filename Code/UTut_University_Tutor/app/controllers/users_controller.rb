@@ -107,12 +107,29 @@ class UsersController < ApplicationController
      # changes user attributes
      def update
           @user = User.find(params[:id])
+
+          # @user.update_attributes(edit_params) returns true if there's something inside, not if something changed
+
           if @user.update_attributes(edit_params)
-               flash[:success] = "User profile updated"
+               # Correct PW and something changed
                redirect_to @user
           else
+               # Correct PW and nothing changed
                render 'edit'
-          end  
+          end
+
+          # if user.authenticate(:old_password)
+          #      if @user.update_attributes(edit_params)
+          #           # Correct PW and something changed
+          #           redirect_to @user
+          #      else
+          #           # Correct PW and nothing changed
+          #           redirect_to root_url
+          #      end
+          # else
+          #      # Incorrect PW, dont care if something or nothing changed
+          #      redirect_to edit_user_path
+          # end
      end
      
      # Create
@@ -142,6 +159,6 @@ class UsersController < ApplicationController
      # Feb 14, 2018
      # Parameters passed when editing user profile
      def edit_params
-          params.require(:user).permit(:description, :old_password, :password, :password_confirmation)
+          params.require(:user).permit(:description, :password, :password_confirmation)
      end
 end

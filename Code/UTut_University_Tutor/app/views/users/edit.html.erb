@@ -29,6 +29,7 @@
      Jules Segismundo, 02/14/18: file creation
      Jade De Guzman, 02/18/18: edited profile update structure
      JD Mendoza, 02/23/18: added change password as label
+     Jules Segismundo, 02/23/18: added cancel button
 
 -->
 
@@ -49,7 +50,7 @@
                <% if @user.errors.any? %>
                     <div id="error_explanation">
                          <div class="alert alert-danger">
-                              Invalid sign up form
+                              Invalid update
                               <ul>
                                    <% @user.errors.full_messages.each do |msg| 
                                         if msg != "Password can't be blank"%>
@@ -67,8 +68,18 @@
                     </div>
                </div>     
                
+
+               <br>
+               <!--
                <div>
-                    <%= f.label :password, "Change Password" %>
+                    <%= f.label :old_password, "Change Password" %>
+                    <div class="col">
+                         <%= f.password_field :old_password, placeholder: "Enter old password" %>
+                    </div>
+               </div>
+               -->
+               <div>
+                    <%= f.label :password, "New Password" %>
                     <div class="col">
                          <%= f.password_field :password %>
                     </div>
@@ -81,7 +92,9 @@
                     </div>
                </div>
                <br>
+               
                     <%= f.submit "Update profile", class: "btn btn-primary" %>
+                    <%= link_to "Cancel", @user, class: "btn btn-primary" %>
                <% end %>
           </div>
      </div>
