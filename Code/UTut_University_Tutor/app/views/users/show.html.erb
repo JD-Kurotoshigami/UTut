@@ -52,6 +52,14 @@
                 <%= f.label "Description"%>
                 <%= ": "+(get_description @user) %>
             </div>
+            <div>
+                <%= f.label "Offered Tutorials"%><br>
+                <!-- this returns a list, loop thru it. 
+                     And maybe Request Tutorial will just have a dropdown? -->
+                <%= (get_offered_tutorials @user)%>
+
+            </div>
+
             <% end %>
         </div>
      </div>
