@@ -28,6 +28,8 @@
 <!-- 
      JD Mendoza, 02/14/18: file creation and initial code
      Jade De Guzman, 02/18/18: table
+     Jade De Guzman, 02/21/18: font size and color, table color
+     Jade De Guzman, 02/23/18: update profile button
 -->
 
 <!-- 
@@ -114,7 +116,9 @@
                          <%end%>
                     </table>
                     <% _min=0 %>
-                    <%= link_to "Update Profile!", edit_user_path, class: "btn btn-lg" %>
+                    <div style="margin-left:65%; margin-top: 10px;">
+                         <%= link_to "Update Profile!", edit_user_path, class: "btn btn-lg btn-primary" %>
+                    </div>
                </div>
             </div>
      <% end %>
