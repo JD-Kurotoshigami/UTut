@@ -28,6 +28,8 @@
 <!-- 
      Jules Segismundo, 02/14/18: file creation
      Jade De Guzman, 02/18/18: edited profile update structure
+     JD Mendoza, 02/23/18: added change password as label
+
 -->
 
 <!-- 
@@ -66,14 +68,14 @@
                </div>     
                
                <div>
-                    <%= f.label :password %>
+                    <%= f.label :password, "Change Password" %>
                     <div class="col">
                          <%= f.password_field :password %>
                     </div>
                </div>
 
                <div>
-                    <%= f.label :password_confirmation, "Confirm Password:" %>
+                    <%= f.label :password_confirmation, "Confirm New Password:" %>
                     <div class="col">
                          <%= f.password_field :password_confirmation %>
                     </div>

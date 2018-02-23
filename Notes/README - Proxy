@@ -1,0 +1,10 @@
+README
+What to do when "THEY" fuck up the proxy:
+su event1 
+     (pw criticalisaw)
+sudoedit /etc/apt/apt.conf
+     REMOVE EVERYTHING then save
+sudoedit /etc/environment
+     Comment out all those related to proxy other than no_proxy (http_proxy/https_proxy/ftp_proxy)
+unset all those commented out things in environment
+restart computer
