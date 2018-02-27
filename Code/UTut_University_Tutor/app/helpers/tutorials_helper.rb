@@ -25,4 +25,7 @@
 #    of the Philippines, Diliman for the AY 2017-2018
 
 module TutorialsHelper
+     def current_user
+          @current_user ||= User.find_by(username: session[:username])
+     end
 end

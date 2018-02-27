@@ -26,34 +26,24 @@
  -->
 
 <!-- 
-     Jules Segismundo, 01/30/18: created file and added skeleton of the html
+     Jules Segismundo: 02/27/18: File Creation
 -->
 
 <!-- 
-     This html file is for creating a tutorial. Cannot be accessed as of the current version.
+     This html file is for the layout of the home page or welcome page
 -->
-<div class="container"> 
-     <h1>Offer Tutorial</h1>
-          <% if has_error? %>
-                         <div id="error_explanation">
-                              <div class="alert alert-danger">
-                                   <ul>
-                                        <li><%= tutorial[:error] %></li>
-                                        <% error_type nil %> <!-- Used to remove message after 1 refresh -->
-                                   </ul>
-                              </div>
-                         </div>
-                    <% end %>
-          <%= form_with scope: :tutorial, local: true do |f| %>
-          <p>
-               <%= f.label :subject %><br>
-               <%= f.text_field :subject %>
-          </p>
-      
-          <p>
-               <%= f.submit %>
-               <%= link_to "Cancel", root_url, class: "btn btn-primary" %>
-          </p>
 
+<div class="center">
+     <h1 id="utut">Need help? UTut mo!</h1>
+     <h2>Find your tutorial needs.</h2>
+     <% if logged_in? %>
+          <%= link_to "Offer Tutorial", new_tutorial_path, class: "btn btn-lg btn-primary" %>
+          <%= link_to "Your Tutorials", tutorials_path, class: "btn btn-lg btn-primary" %>
+          <%= link_to "Search Tutor", tutorials_path, class: "btn btn-lg btn-primary" %>
+          <!-- can be changed to search for tutor -->
+     <% else %>
+          You need to be logged in
+          <%= link_to "Sign up!", signup_path, class: "btn btn-lg btn-primary" %> or
+          <%= link_to "Sign in!", login_path, class: "btn btn-lg btn-primary" %>
      <% end %>
 </div>

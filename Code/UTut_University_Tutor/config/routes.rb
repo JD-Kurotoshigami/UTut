@@ -20,7 +20,9 @@ Rails.application.routes.draw do
      post '/login', to: 'sessions#create'
      delete '/logout', to: 'sessions#destroy'
 
-
+     get 'tutorials', to: 'tutorials#index'
+     get 'tutorials/new', to: 'tutorials#new'
+     post 'tutorials/new', to: 'tutorials#create'
      get 'users', to: 'welcome#index'
      get 'users/:id', to: 'users#show'
      get 'users/:id/edit', to: 'users#edit'
