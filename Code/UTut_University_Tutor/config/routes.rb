@@ -23,6 +23,10 @@ Rails.application.routes.draw do
      get 'tutorials', to: 'tutorials#index'
      get 'tutorials/new', to: 'tutorials#new'
      post 'tutorials/new', to: 'tutorials#create'
+     get 'tutorials/search', to: 'tutorials#search'
+
+     post 'tutorials/search', to: 'tutorials#tutorial_search'
+
      get 'users', to: 'welcome#index'
      get 'users/:id', to: 'users#show'
      get 'users/:id/edit', to: 'users#edit'

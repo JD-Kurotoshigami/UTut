@@ -28,4 +28,13 @@ module TutorialsHelper
      def current_user
           @current_user ||= User.find_by(username: session[:username])
      end
+
+     def error_type(error)
+          tutorials[:error] = error
+     end
+     def test
+     end
+     def set_my_search_params(para)
+          @search_params = para
+     end
 end

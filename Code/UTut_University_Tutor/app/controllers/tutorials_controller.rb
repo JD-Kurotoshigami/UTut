@@ -27,7 +27,10 @@
 class TutorialsController < ApplicationController
      def new
           @tutorial = Tutorial.new
+     end
 
+     def show
+          render 'search'
      end
 
      def create
@@ -41,10 +44,23 @@ class TutorialsController < ApplicationController
           end
      end
 
+
+     def tutorial_search
+          @search_params = params[:search]
+          #set_my_search_params (params[:search])
+          subject = @search_params[:subject].downcase
+          if subject == "cs"
+               redirect_to root_url
+          else 
+               redirect_to tutorials_search_path
+          end
+     end
+
      private
 
      def tutorial_params
           params.require(:tutorial).permit(:subject)
      end
+
 
 end
