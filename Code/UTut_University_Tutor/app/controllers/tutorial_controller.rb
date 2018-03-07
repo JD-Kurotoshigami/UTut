@@ -52,12 +52,21 @@ class TutorialController < ApplicationController
 
      def tutorial_search
           set_search_params (params[:search])
-          subject = session[:search_params][:subject].downcase
-          if subject == "cs" 
-               redirect_to root_url
-          else 
-               search_error_type "No Offer"
+          params = session[:search_params]
+          list = Tutorial.order(:subject).where("subject like ? ", "%"+params[:subject].upcase+"%")
+          res = []
+          list.each do |item|
+               #if session[:search_result][item.subject].nil?
+               #     session[:search_result][item.subject] = []
+               #end
+               #session[:search_result][item.subject] << item
+               res << item
+          end
+          if res.size > 0
+               session[:search_result] = res
                redirect_to tutorial_search_result_path
+          else
+               search_error_type "No Found"
           end
      end
 
