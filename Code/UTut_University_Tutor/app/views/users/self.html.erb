@@ -41,9 +41,9 @@
           <div class="container">
                <ul class="nav nav-tabs nav-justified">
                     <li class="active"><a data-toggle="tab" href="#account">Your Account</a></li>
-                    <li><a data-toggle="tab" href="#schedule">Schedule</a></li>
+                    <li><a data-toggle="tab" href="#schedule">My Schedule</a></li>
                     <li><a data-toggle="tab" href="#tutorial">Offered Tutorials</a></li>
-                    <li><a data-toggle="tab" href="#request">Search</a></li>
+                    <li><a data-toggle="tab" href="#request">Pending Tutorials</a></li>
                </ul>
 
                <div class="tab-content">
@@ -148,22 +148,21 @@
                                      <% your_tutorials.each do |t| %>
                                 <!-- can be changed to search for tutor -->
                                      
-                                          <tr>
-                                              <td><%= (get_tutor t) %></td>
-                                              <td><%= (get_tutee t) %></td>
-                                              <td><%= (get_subject t) %></td>
-                                              <td><%= (normalize_time t.start_hr, t.start_min) %></td>
-                                              <td><%= (normalize_time t.end_hr, t.end_min) %></td>
-                                              <td><%= (get_day t) %></td>
-                                          </tr>
+                                                    <tr>
+                                                        <td><%= (get_tutor t) %></td>
+                                                        <td><%= (get_tutee t) %></td>
+                                                        <td><%= (get_subject t) %></td>
+                                                        <td><%= (normalize_time t.start_hr, t.start_min) %></td>
+                                                        <td><%= (normalize_time t.end_hr, t.end_min) %></td>
+                                                        <td><%= (get_day t) %></td>
+                                                    </tr>
 
-                                     <%end%>
-                            <% end %>
-                            </table>
-                       <% end %>
-                  </div>
+                                               <%end%>
+                                      <% end %>
+                                      </table>
+                                 <% end %>
 
-                    </div>
+                            </div>
                     <div id="request" class="tab-pane fade">
                          <%= link_to "Search Tutor", tutorial_search_path, class: "btn btn-lg btn-primary" %>
                          <%= link_to "Update Profile", edit_user_path, class: "btn btn-lg btn-primary" %>
