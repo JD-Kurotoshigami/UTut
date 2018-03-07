@@ -36,4 +36,8 @@ module TutorialHelper
      def set_search_params(para)
           session[:search_params] = para
      end
+
+     def stringify_schedule(tut)
+          tut.day+tut.start_hr+":"+tut.start_min+"-"+tut.end_hr+":"+tut.end_min
+     end
 end

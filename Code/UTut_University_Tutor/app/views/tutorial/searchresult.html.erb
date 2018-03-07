@@ -35,5 +35,28 @@
 
 <div class="container"> 
      <h1>Search for Tutor</h1>
-     hello there
+     hello there<br>
+
+     <%= has_search_error? %>
+     <br>
+     <%= session[:search_error]  %>
+     <%= session[:search_params] %>
+     <% @search_result = session[:search_result] %>
+     <table>
+          <tr>
+               <th>Tutor</th>
+               <th>Subject</th>
+               <th>Schedule</th>
+               <th>Request</th>
+          </tr>
+
+          <% @search_result.subjects.each do |subject| %>
+                <td> <%= subject.tutor_id %> </td>
+                <td> <%= subject.subject %></td>
+                <% subject.tutorial.each do |tut| %>
+                    <td> <%= stringify_schedule tut %></td>
+                    <td> <%= link_to root_url, "Button", class: "btn btn-primary" %> </td>
+                <% end %>
+          <% end %>
+     </table>
 </div>
