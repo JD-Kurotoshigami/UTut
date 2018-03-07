@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tut_id: 1
+  tutor_id: 1
+  tutee_id: 1
+
+two:
+  tut_id: 1
+  tutor_id: 1
+  tutee_id: 1

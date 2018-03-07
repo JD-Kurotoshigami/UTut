@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227153428) do
+ActiveRecord::Schema.define(version: 20180307073948) do
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "tut_id"
+    t.integer "tutor_id"
+    t.integer "tutee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tut_id"], name: "index_requests_on_tut_id"
+    t.index ["tutee_id"], name: "index_requests_on_tutee_id"
+    t.index ["tutor_id"], name: "index_requests_on_tutor_id"
+  end
 
   create_table "timeslots", force: :cascade do |t|
     t.integer "start_hr"
@@ -33,7 +44,6 @@ ActiveRecord::Schema.define(version: 20180227153428) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  # note: tutorial always starts out as empty: (tutor_id only has a field)
 
   create_table "users", force: :cascade do |t|
     t.string "username"
