@@ -55,14 +55,14 @@
                <%= f.label :subject %><br>
                <%= f.text_field :subject %><br>
                Available Starting any time from
-               <%= f.select :start_hour, [0, 1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23] %>
+               <%= f.select :start_hr, [0, 1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23], :selected => 0 %>
                :
-               <%= f.select :start_minute, ['00', 30] %>
+               <%= f.select :start_min, ['00', 30], :selected => '00' %>
                until
-               <%= f.select :end_hour, [0, 1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23] %>
+               <%= f.select :end_hr, [0, 1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23] , :selected => 23%>
                :
-               <%= f.select :end_minute, ['00', 30] %><br>
-               On any of the following days:
+               <%= f.select :end_min, ['00', 30], :selected => '00' %><br>
+               On any of the following days: (leaving them all blank will consider them all)
                <br>
                <%= f.check_box "Sun", id:"sun" %> 
                <%= f.label :sun %><br>

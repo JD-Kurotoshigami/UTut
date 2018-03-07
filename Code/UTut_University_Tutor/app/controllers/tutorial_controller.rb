@@ -53,20 +53,32 @@ class TutorialController < ApplicationController
      def tutorial_search
           set_search_params (params[:search])
           params = session[:search_params]
-          list = Tutorial.order(:subject).where("subject like ? ", "%"+params[:subject].upcase+"%")
+          days = []
+          if (params["Mon"].to_i + params["Tue"].to_i + params["Wed"].to_i + params["Thu"].to_i + params["Fri"].to_i + params["Sat"].to_i + params["Sun"].to_i) <= 0
+               params["Mon"] = '1'
+               params["Tue"] = '1'
+               params["Wed"] = '1'
+               params["Thu"] = '1'
+               params["Fri"] = '1'
+               params["Sat"] = '1'
+               params["Sun"] = '1'
+          end
+          days = ["Mon"*params["Mon"].to_i,"Tue"*params["Tue"].to_i,"Wed"*params["Wed"].to_i,"Thu"*params["Thu"].to_i,"Fri"*params["Fri"].to_i,"Sat"*params["sat"].to_i,"Sun"*params["sun"].to_i]
+
+          list = Tutorial.where("(subject like ?) AND (day IN (?)) AND ((start_hr*100)+start_min >= ?) AND ((end_hr*100)+end_min <= ?)", "%"+params[:subject].upcase+"%", days , (params[:start_hr].to_i*100)+params[:start_min].to_i, (params[:end_hr].to_i*100)+params[:end_min].to_i).order(:subject)
           res = []
           list.each do |item|
-               #if session[:search_result][item.subject].nil?
-               #     session[:search_result][item.subject] = []
-               #end
-               #session[:search_result][item.subject] << item
                res << item
           end
-          if res.size > 0
+          if (params[:start_hr].to_i*100)+params[:start_min].to_i >= (params[:end_hr].to_i*100)+params[:end_min].to_i
+               search_error_type "Invalid Time Interval"
+               redirect_to tutorial_search_path
+          elsif res.size > 0
                session[:search_result] = res
                redirect_to tutorial_search_result_path
           else
-               search_error_type "No Found"
+               search_error_type "No Tutorial Offer that matches the conditions"
+               redirect_to tutorial_search_path
           end
      end
 

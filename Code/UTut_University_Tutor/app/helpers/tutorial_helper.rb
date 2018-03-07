@@ -43,7 +43,7 @@ module TutorialHelper
           if tut['day'].nil? or tut['start_hr'].nil? or tut['start_min'].nil? or tut['end_hr'].nil? or tut['end_min'].nil?
                "null hahaa"
           else
-               tut['day'][0].upcase + " "+ (normalize_time tut['start_hr'], tut['start_min']) +"-"+ (normalize_time tut['end_hr'], tut['end_min'])
+               tut['day'].upcase + " "+ (normalize_time tut['start_hr'], tut['start_min']) +"-"+ (normalize_time tut['end_hr'], tut['end_min'])
           end
      end
      def offered_tutorials(user)

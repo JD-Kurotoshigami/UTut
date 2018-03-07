@@ -32,7 +32,7 @@
 <!-- 
      This html file is for the layout of the search results page
 -->
-
+<%= session[:search_params] %>
 <div class="container"> 
      <h1>Search for Tutor</h1>
      <% @search_result = session[:search_result] %>
@@ -49,7 +49,7 @@
                 <td> <%= get_full_name User.find(subject["tutor_id"]) %> </td>
                 <td> <%= subject["subject"] %></td>
                 <td> <%= stringify_schedule subject %></td>
-                    <td> <%= link_to root_url, "Button", class: "btn btn-primary" %> </td>
+                    <td> <%= link_to "Request Tutorial", root_url, class: "btn btn-primary" %> </td>
                     </tr>
 
                 
