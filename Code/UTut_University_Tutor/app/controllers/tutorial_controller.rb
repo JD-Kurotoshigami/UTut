@@ -53,7 +53,7 @@ class TutorialController < ApplicationController
                redirect_to root_url
           else 
                search_error_type "No Offer"
-               redirect_to tutorial_search_path
+               redirect_to tutorial_search_result_path
           end
      end
 
