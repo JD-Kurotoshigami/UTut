@@ -37,88 +37,136 @@
 -->
 <div class="container">
      <% provide(:title, "User Profile") %>
-          <div class="row", id="form">
-               <%= form_for(@user) do |f| %>
-               <div> <h1>YOUR ACCOUNT</h1> </div>
-               <div class="container">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5", id="deets">
-                         <div>
-                              <%= f.label "Student Number:"%>
-                              <%= (get_sid @user)%>
+          <!-- TABS -->
+          <div class="container">
+               <ul class="nav nav-tabs nav-justified">
+                    <li class="active"><a data-toggle="tab" href="#account">Your Account</a></li>
+                    <li><a data-toggle="tab" href="#schedule">Schedule</a></li>
+                    <li><a data-toggle="tab" href="#tutorial">Offered Tutorials</a></li>
+                    <li><a data-toggle="tab" href="#request">Search</a></li>
+               </ul>
+
+               <div class="tab-content">
+                    <div id="account" class="tab-pane fade in active">
+                         <div class="row", id="form">
+                              <%= form_for(@user) do |f| %>
+                              <div class="container">
+                                   <div class="col-md-1"></div>
+                                   <div class="col-md-5", id="deets">
+                                        <div>
+                                             <%= f.label "Student Number:"%>
+                                             <%= (get_sid @user)%>
+                                        </div>
+                                        <div>
+                                             <%= f.label "Name:"%>
+                                             <%= (get_full_name @user).titleize %>
+                                        </div>
+                                        <div>
+                                             <%= f.label "Sex:"%>
+                                             <%= (get_sex @user)%>
+                                        </div>
+                                   </div>
+                                   <div class="col-md-5", id="deets">
+                                        <div>
+                                             <%= f.label "Description:"%>
+                                             <%= (get_description @user) %>
+                                        </div>
+                                   </div>
+                              </div>
                          </div>
-                         <div>
-                              <%= f.label "Name:"%>
-                              <%= (get_full_name @user).titleize %>
-                         </div>
-                         <div>
-                              <%= f.label "Sex:"%>
-                              <%= (get_sex @user)%>
-                         </div>
-                     </div>
-                     <div class="col-md-5", id="deets">
-                         <div>
-                              <%= f.label "Description:"%>
-                              <%= (get_description @user) %>
-                         </div>
-                     </div>
-                </div>
-            </div>
-            <div class="container">
-               <div class="col-md-1"></div>
-               <div class="col-md-5">
-                    <%_hr=7 %>
-                    <%_min=0 %>
-                    <table>
-                         <tr>
-                              <th>Time</th>
-                              <th>Subject</th>
-                         </tr>
-                         <% while _hr < 15 do %>
-                              <% _min=0 %>
-                              <% while _min < 60 do %>
-                              <tr>
-                                   <td>
-                                        <%= (normalize_time _hr, _min)%>
-                                        <% _min += 30 %>
-                                        <%= "- "+(normalize_time _hr, _min)%>
-                                        <br> 
-                                    </td>
-                                    <td> X </td>
-                              </tr>
-                              <%end%> 
-                              <% _hr+=1 %>
-                         <%end%>
-                    </table>
-               </div>
-               <div class="col-md-5">
-                    <%_hr=15 %>
-                    <%_min=0 %>
-                    <table>
-                         <tr>
-                              <th>Time</th>
-                              <th>Subject</th>
-                         </tr>
-                         <% while _hr < 23 do %>
-                              <% _min=0 %>
-                              <% while _min < 60 do %>
-                              <tr>
-                                   <td>
-                                        <%= (normalize_time _hr, _min)%>
-                                        <% _min += 30 %>
-                                        <%= "- "+(normalize_time _hr, _min)%>
-                                    </td>
-                                    <td> Y </td>
-                              </tr>
-                              <%end%> 
-                              <% _hr+=1 %>
-                         <%end%>
-                    </table>
-                    <% _min=0 %>
-                    <div style="margin-left:65%; margin-top: 10px;">
-                         <%= link_to "Update Profile!", edit_user_path, class: "btn btn-lg btn-primary" %>
+                    </div>
+
+                    <div id="schedule" class="tab-pane fade" style="margin-top: 30px;">
+                         <div class="container">
+                              <div class="col-md-1"></div>
+                              <div class="col-md-5">
+                                   <%_hr=7 %>
+                                   <%_min=0 %>
+                                   <table>
+                                        <tr>
+                                             <th>Time</th>
+                                             <th>Subject</th>
+                                        </tr>
+                                        <% while _hr < 15 do %>
+                                             <% _min=0 %>
+                                             <% while _min < 60 do %>
+                                                  <tr>
+                                                       <td>
+                                                            <%= (normalize_time _hr, _min)%>
+                                                            <% _min += 30 %>
+                                                            <%= "- "+(normalize_time _hr, _min)%>
+                                                            <br> 
+                                                       </td>
+                                                       <td> X </td>
+                                                  </tr>
+                                             <%end%> 
+                                             <% _hr+=1 %>
+                                        <%end%>
+                                   </table>
+                              </div>
+                            <div class="col-md-5">
+                                 <%_hr=15 %>
+                                 <%_min=0 %>
+                                 <table>
+                                      <tr>
+                                           <th>Time</th>
+                                           <th>Subject</th>
+                                      </tr>
+                                      <% while _hr < 23 do %>
+                                           <% _min=0 %>
+                                           <% while _min < 60 do %>
+                                                <tr>
+                                                    <td>
+                                                         <%= (normalize_time _hr, _min)%>
+                                                         <% _min += 30 %>
+                                                         <%= "- "+(normalize_time _hr, _min)%>
+                                                    </td>
+                                                   <td> Y </td>
+                                                </tr>
+                                           <%end%> 
+                                           <% _hr+=1 %>
+                                      <%end%>
+                                 </table>
+                                 <% _min=0 %>
+                            </div>
+                        </div>  
+                    </div>
+                    <div id="tutorial" class="tab-pane fade">
+                         <br>
+                            <% if your_tutorials.count == 0%>
+                                 <h1> You have no offered tutorials </h1>
+                            <%else%>
+                                <table>
+                                     <tr>
+                                         <th>Tutor</th>
+                                         <th>Tutee</th>
+                                         <th>Subject</th>
+                                         <th>Start Time</th>
+                                         <th>End Time</th>
+                                         <th>Day</th>
+                                     </tr>
+                                     <% your_tutorials.each do |t| %>
+                                <!-- can be changed to search for tutor -->
+                                     
+                                          <tr>
+                                              <td><%= (get_tutor t) %></td>
+                                              <td><%= (get_tutee t) %></td>
+                                              <td><%= (get_subject t) %></td>
+                                              <td><%= (normalize_time t.start_hr, t.start_min) %></td>
+                                              <td><%= (normalize_time t.end_hr, t.end_min) %></td>
+                                              <td><%= (get_day t) %></td>
+                                          </tr>
+
+                                     <%end%>
+                            <% end %>
+                            </table>
+                       <% end %>
+                  </div>
+
+                    </div>
+                    <div id="request" class="tab-pane fade">
+                         <%= link_to "Search Tutor", tutorial_search_path, class: "btn btn-lg btn-primary" %>
+                         <%= link_to "Update Profile", edit_user_path, class: "btn btn-lg btn-primary" %>
                     </div>
                </div>
-            </div>
-     <% end %>
-</div>
+          </div>
