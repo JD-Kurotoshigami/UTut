@@ -39,11 +39,38 @@
      <h2>Find your tutorial needs.</h2>
      <% if logged_in? %>
           <%= link_to "Offer Tutorial", new_tutorial_path, class: "btn btn-lg btn-primary" %>
-          <%= link_to "Your Tutorials", tutorial_index_path, class: "btn btn-lg btn-primary" %>
+          <!--<%= link_to "Your Tutorials", tutorial_own_path, class: "btn btn-lg btn-primary" %>-->
           <%= link_to "Search Tutor", tutorial_search_path, class: "btn btn-lg btn-primary" %>
-          <!-- can be changed to search for tutor -->
+          <br>
+          <% if your_tutorials.count == 0%>
+               <h1> You have no offered tutorials </h1>
+          <%else%>
+              <table>
+                   <tr>
+                       <th>Tutor</th>
+                       <th>Tutee</th>
+                       <th>Subject</th>
+                       <th>Start Time</th>
+                       <th>End Time</th>
+                       <th>Day</th>
+                   </tr>
+                   <% your_tutorials.each do |t| %>
+              <!-- can be changed to search for tutor -->
+                   
+                        <tr>
+                            <td><%= (get_tutor t) %></td>
+                            <td><%= (get_tutee t) %></td>
+                            <td><%= (get_subject t) %></td>
+                            <td><%= (normalize_time t.start_hr, t.start_min) %></td>
+                            <td><%= (normalize_time t.end_hr, t.end_min) %></td>
+                            <td><%= (get_day t) %></td>
+                        </tr>
+
+                   <%end%>
+          <% end %>
+          </table>
      <% else %>
-          You need to be logged in
+          <h2>You need to be logged in</h2>
           <%= link_to "Sign up!", signup_path, class: "btn btn-lg btn-primary" %> or
           <%= link_to "Sign in!", login_path, class: "btn btn-lg btn-primary" %>
      <% end %>

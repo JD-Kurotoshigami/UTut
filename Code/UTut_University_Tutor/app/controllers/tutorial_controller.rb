@@ -35,6 +35,10 @@ class TutorialController < ApplicationController
           render 'search'
      end
 
+     def index
+          
+     end
+
      def create
           
           @tutorial = Tutorial.new(tutorial_params)
@@ -60,7 +64,7 @@ class TutorialController < ApplicationController
      private
 
      def tutorial_params
-          params.require(:tutorial).permit(:subject)
+          params.require(:tutorial).permit(:subject, :start_hr, :end_hr, :start_min, :end_min, :day)
      end
 
 end

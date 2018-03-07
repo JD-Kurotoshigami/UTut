@@ -25,6 +25,8 @@
 #    of the Philippines, Diliman for the AY 2017-2018
 
 module TutorialHelper
+     include UsersHelper
+     include SessionsHelper
      def search_error_type(err)
           session[:search_error] = err
      end
@@ -39,5 +41,34 @@ module TutorialHelper
 
      def stringify_schedule(tut)
           tut.day+tut.start_hr+":"+tut.start_min+"-"+tut.end_hr+":"+tut.end_min
+     end
+
+     def offered_tutorials(user)
+          Tutorial.where(tutor_id: user.id)
+     end
+
+     def your_tutorials
+          offered_tutorials(current_user)
+     end
+
+     def get_tutor(tut)
+          get_full_name(User.find_by(id: tut.tutor_id))
+     end
+
+     def get_tutee(tut)
+          tutee = User.find_by(id: tut.tutee_id)
+          if tutee
+               get_full_name(tutee)
+          else
+               "None"
+          end
+     end
+
+     def get_subject(tut)
+          tut.subject
+     end
+
+     def get_day(tut)
+          tut.day
      end
 end

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
      get 'tutorial', to: 'tutorial#index'
      get 'tutorial/new', to: 'tutorial#new'
      post 'tutorial/new', to: 'tutorial#create'
+     get 'tutorial/own', to: 'tutorial#own'
      get 'tutorial/search', to: 'tutorial#search'
      get 'tutorial/search/result', to: 'tutorial#searchresult'
      post 'tutorial/search', to: 'tutorial#tutorial_search'

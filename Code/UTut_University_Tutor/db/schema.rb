@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20180227153428) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+  # note: tutorial always starts out as empty: (tutor_id only has a field)
 
   create_table "users", force: :cascade do |t|
     t.string "username"

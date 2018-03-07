@@ -33,4 +33,9 @@ class Tutorial < ApplicationRecord
     VALID_SUBJECT_REGEX = /\A([A-Z]+(\ )?[0-9]+(.[0-9]+)?)\Z/i
     validates :subject, presence: true, format: { with: VALID_SUBJECT_REGEX }
     validates :tutor_id, presence: true
+    validates :start_hr, presence: true
+    validates :end_hr, presence: true
+    validates :day, presence: true
+    validates :start_min, presence: true
+    validates :end_min, presence: true
 end
