@@ -24,17 +24,43 @@
 #    Science, College of Engineering, University
 #    of the Philippines, Diliman for the AY 2017-2018
 
-module TutorialsHelper
-     def current_user
-          @current_user ||= User.find_by(username: session[:username])
+include TutorialHelper
+
+class TutorialController < ApplicationController
+     def new
+          @tutorial = Tutorial.new
      end
 
-     def error_type(error)
-          tutorials[:error] = error
+     def show
+          render 'search'
      end
-     def test
+
+     def create
+          
+          @tutorial = Tutorial.new(tutorial_params)
+          @tutorial.tutor_id = current_user.id
+          if @tutorial.save
+               redirect_to root_url
+          else
+               render 'new'
+          end
      end
-     def set_my_search_params(para)
-          @search_params = para
+
+     def tutorial_search
+          set_search_params (params[:search])
+          subject = session[:search_params][:subject].downcase
+          if subject == "cs" 
+               redirect_to root_url
+          else 
+               search_error_type "No Offer"
+               redirect_to tutorial_search_path
+          end
      end
+
+     private
+
+     def tutorial_params
+          params.require(:tutorial).permit(:subject)
+     end
+
 end

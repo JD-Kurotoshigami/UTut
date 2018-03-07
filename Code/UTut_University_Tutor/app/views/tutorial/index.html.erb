@@ -26,14 +26,25 @@
  -->
 
 <!-- 
-     JD Mendoza: 02/28/18: File Creation
+     Jules Segismundo: 02/27/18: File Creation
+     JD Mendoza: 02/28/18: Changed link of search tutor.
 -->
 
 <!-- 
-     This html file is for the layout of the search results page
+     This html file is for the layout of the home page or welcome page
 -->
 
-<div class="container"> 
-     <h1>Search for Tutor</h1>
-     
+<div class="center">
+     <h1 id="utut">Need help? UTut mo!</h1>
+     <h2>Find your tutorial needs.</h2>
+     <% if logged_in? %>
+          <%= link_to "Offer Tutorial", new_tutorial_path, class: "btn btn-lg btn-primary" %>
+          <%= link_to "Your Tutorials", tutorial_index_path, class: "btn btn-lg btn-primary" %>
+          <%= link_to "Search Tutor", tutorial_search_path, class: "btn btn-lg btn-primary" %>
+          <!-- can be changed to search for tutor -->
+     <% else %>
+          You need to be logged in
+          <%= link_to "Sign up!", signup_path, class: "btn btn-lg btn-primary" %> or
+          <%= link_to "Sign in!", login_path, class: "btn btn-lg btn-primary" %>
+     <% end %>
 </div>

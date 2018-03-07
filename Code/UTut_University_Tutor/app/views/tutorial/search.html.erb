@@ -1,4 +1,6 @@
-<!--  UTut: University Tutor
+<!--
+  searcg
+  UTut: University Tutor
     Copyright (C) 2018  
     Mendoza, John Dominic
     Segismundo, Julio 
@@ -35,17 +37,18 @@
 
 <div class="container"> 
      <h1>Search for Tutor</h1>
-          <% if has_error? %>
+          <%= form_for(:search, url: tutorial_search_path) do |f| %>
+
+          <% if has_search_error? %>
                          <div id="error_explanation">
                               <div class="alert alert-danger">
                                    <ul>
-                                        <li><%= tutorial[:error] %></li>
-                                        <% error_type nil %> <!-- Used to remove message after 1 refresh -->
+                                        <li><%= session[:search_error] %></li>
+                                        <% search_error_type nil %> <!-- Used to remove message after 1 refresh -->
                                    </ul>
                               </div>
                          </div>
                     <% end %>
-          <%= form_for(:search, url: tutorials_search_path) do |f| %>
           <p>
 
           <!-- Possible error is start time is later than end time -->

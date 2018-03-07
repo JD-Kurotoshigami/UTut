@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
      get 'users/new'
 
-     resources :tutorials
+     resources :tutorial
      resources :users
      resources :sessions
 
@@ -20,12 +20,12 @@ Rails.application.routes.draw do
      post '/login', to: 'sessions#create'
      delete '/logout', to: 'sessions#destroy'
 
-     get 'tutorials', to: 'tutorials#index'
-     get 'tutorials/new', to: 'tutorials#new'
-     post 'tutorials/new', to: 'tutorials#create'
-     get 'tutorials/search', to: 'tutorials#search'
+     get 'tutorial', to: 'tutorial#index'
+     get 'tutorial/new', to: 'tutorial#new'
+     post 'tutorial/new', to: 'tutorial#create'
+     get 'tutorial/search', to: 'tutorial#search'
 
-     post 'tutorials/search', to: 'tutorials#tutorial_search'
+     post 'tutorial/search', to: 'tutorial#tutorial_search'
 
      get 'users', to: 'welcome#index'
      get 'users/:id', to: 'users#show'

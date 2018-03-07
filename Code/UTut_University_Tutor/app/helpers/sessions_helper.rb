@@ -38,7 +38,7 @@ module SessionsHelper
      # Attempts to log in a user
      # User: The user to log in
      def log_in(user)
-          session[:username] = user.username
+          sessiongh[:username] = user.username
           session[:error] = nil
      end
 

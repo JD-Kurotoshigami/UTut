@@ -24,43 +24,16 @@
 #    Science, College of Engineering, University
 #    of the Philippines, Diliman for the AY 2017-2018
 
-class TutorialsController < ApplicationController
-     def new
-          @tutorial = Tutorial.new
+module TutorialHelper
+     def search_error_type(err)
+          session[:search_error] = err
      end
 
-     def show
-          render 'search'
+     def has_search_error?
+          !session[:search_error].nil?
      end
 
-     def create
-          
-          @tutorial = Tutorial.new(tutorial_params)
-          @tutorial.tutor_id = current_user.id
-          if @tutorial.save
-               redirect_to root_url
-          else
-               render 'new'
-          end
+     def set_search_params(para)
+          session[:search_params] = para
      end
-
-
-     def tutorial_search
-          @search_params = params[:search]
-          #set_my_search_params (params[:search])
-          subject = @search_params[:subject].downcase
-          if subject == "cs"
-               redirect_to root_url
-          else 
-               redirect_to tutorials_search_path
-          end
-     end
-
-     private
-
-     def tutorial_params
-          params.require(:tutorial).permit(:subject)
-     end
-
-
 end

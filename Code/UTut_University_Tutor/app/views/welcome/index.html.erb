@@ -41,7 +41,7 @@
      <h1 id="utut">UTut: University Tutor</h1>
      <h2>Find your tutorial needs.</h2>
      <% if logged_in? %>
-          <%= link_to "UTut na!", tutorials_path, class: "btn btn-lg btn-primary" %>
+          <%= link_to "UTut na!", tutorial_index_path, class: "btn btn-lg btn-primary" %>
           <!-- can be changed to search for tutor -->
      <% else %>
           <%= link_to "Sign up!", signup_path, class: "btn btn-lg btn-primary" %> or
