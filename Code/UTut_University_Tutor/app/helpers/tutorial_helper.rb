@@ -31,6 +31,10 @@ module TutorialHelper
           session[:search_error] = err
      end
 
+     def has_tutorial_error?
+          !tutorial[:error].nil?
+     end
+
      def has_search_error?
           !session[:search_error].nil?
      end
@@ -74,4 +78,5 @@ module TutorialHelper
      def get_day(tut)
           tut.day
      end
+
 end

@@ -26,16 +26,31 @@
 
 #    Jules Segismundo: Feb 27, 2018: Initial Code
 class Tutorial < ApplicationRecord
-    # makes subject uppercase and removes all whitespaces
-    # ? DAPAT BA MAY DATABASE OF SUBJECTS PARA HINDI MAGULO? 
-    # makes sure that a tutorial has a subject
-    before_save { self.subject = self.subject.upcase().gsub(/\s+/, "") }
-    VALID_SUBJECT_REGEX = /\A([A-Z]+(\ )?[0-9]+(.[0-9]+)?)\Z/i
-    validates :subject, presence: true, format: { with: VALID_SUBJECT_REGEX }
-    validates :tutor_id, presence: true
-    validates :start_hr, presence: true
-    validates :end_hr, presence: true
-    validates :day, presence: true
-    validates :start_min, presence: true
-    validates :end_min, presence: true
+     # makes subject uppercase and removes all whitespaces
+     # ? DAPAT BA MAY DATABASE OF SUBJECTS PARA HINDI MAGULO? 
+     # makes sure that a tutorial has a subject
+     before_save { self.subject = self.subject.upcase().gsub(/\s+/, "") }
+     VALID_SUBJECT_REGEX = /\A([A-Z]+(\ )?[0-9]+(.[0-9]+)?)\Z/i
+     validates :subject, presence: true, format: { with: VALID_SUBJECT_REGEX }
+     validates :tutor_id, presence: true
+     validates :start_hr, presence: true
+     validates :end_hr, presence: true
+     validates :day, presence: true
+     validates :start_min, presence: true
+     validates :end_min, presence: true
+     validate :start_min_before_end_min
+     validate :start_hr_before_end_hr
+ 
+     private
+          def start_min_before_end_min
+               if start_hr == end_hr
+                    errors.add(:start_min, "must be before end min") unless
+                         start_min < end_min
+               end
+          end
+
+          def start_hr_before_end_hr
+               errors.add(:start_hr, "must be before end hr") unless 
+                    start_hr <= end_hr          
+          end
 end
