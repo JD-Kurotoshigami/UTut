@@ -65,12 +65,16 @@ class TutorialController < ApplicationController
           end
           days = ["Mon"*params["Mon"].to_i,"Tue"*params["Tue"].to_i,"Wed"*params["Wed"].to_i,"Thu"*params["Thu"].to_i,"Fri"*params["Fri"].to_i,"Sat"*params["Sat"].to_i,"Sun"*params["Sun"].to_i]
 
+<<<<<<< HEAD
           res = Tutorial.where("(subject like ?) AND (day IN (?)) AND ((start_hr*100)+start_min >= ?) AND ((end_hr*100)+end_min <= ?) AND NOT (tutor_id == ?)", 
                "%"+params[:subject].upcase.gsub(/\s+/, "")+"%", 
                days, 
                (params[:start_hr].to_i*100)+params[:start_min].to_i, 
                (params[:end_hr].to_i*100)+params[:end_min].to_i, 
                current_user.id).order(:subject)
+=======
+          res = Tutorial.where("(subject like ?) AND (day IN (?)) AND ((start_hr*100)+start_min >= ?) AND ((end_hr*100)+end_min <= ?)", "%"+params[:subject].upcase.gsub(/\s+/, "")+"%", days , (params[:start_hr].to_i*100)+params[:start_min].to_i, (params[:end_hr].to_i*100)+params[:end_min].to_i).order(:subject)
+>>>>>>> d4b636bd9f68e73de6c8d708ed2f98bab34a2416
 
           if (params[:start_hr].to_i*100)+params[:start_min].to_i >= (params[:end_hr].to_i*100)+params[:end_min].to_i
                search_error_type "Invalid Time Interval"
