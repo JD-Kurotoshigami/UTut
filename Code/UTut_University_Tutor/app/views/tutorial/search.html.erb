@@ -53,7 +53,13 @@
 
           <!-- Possible error is start time is later than end time -->
                <%= f.label :subject %><br>
-               <%= f.text_field :subject %><br>
+               <%= f.text_field :subject, class: "form-control" %><br>
+               
+               <%= f.label :subject do %>
+               <%= f.text_field :subject %>
+               I agree to the <%= link_to 'Terms of Service', policies_path %>.
+               <% end %>
+               
                Available Starting any time from
                <%= f.select :start_hr, [0, 1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23], :selected => 0 %>
                :
