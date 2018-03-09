@@ -48,9 +48,10 @@
                     <div id="tutorial" class="tab-pane fade in active">
                          <br>
                             <% if your_tutorials.count == 0%>
-                                 <h1> You have no offered tutorials </h1>
+                                 <h1 id="signup"> You have no offered tutorials </h1>
                             <% else %>
                                 <table>
+                                     <thead>
                                      <tr>
                                          <th>Tutor</th>
                                          <th>Tutee</th>
@@ -59,6 +60,7 @@
                                          <th>End Time</th>
                                          <th>Day</th>
                                      </tr>
+                                     </thead>
                                      <% your_tutorials.each do |t| %>
                                 <!-- can be changed to search for tutor -->
                                      

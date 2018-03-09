@@ -33,15 +33,17 @@
      This html file is for the layout of the search results page
 -->
 <div class="container"> 
-     <h1>Search for Tutor</h1>
+     <h1 id="signup">Search for Tutor</h1>
      <% @search_result = session[:search_result] %>
      <table>
+          <thead>
           <tr>
                <th>Tutor</th>
                <th>Subject</th>
                <th>Schedule</th>
                <th>Request</th>
           </tr>
+          </thead>
 
           <% @search_result.each do |subject| %>
           <tr>
