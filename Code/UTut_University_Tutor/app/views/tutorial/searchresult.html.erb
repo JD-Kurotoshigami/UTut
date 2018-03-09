@@ -50,7 +50,8 @@
                 <td> <%= get_full_name User.find(subject["tutor_id"]) %> </td>
                 <td> <%= subject["subject"] %></td>
                 <td> <%= stringify_schedule subject %></td>
-                    <td> <%= link_to "Request Tutorial", root_url class: "btn btn-primary" %> </td>
+                  <!-- how to place the information of the row in the current table in here lmao -->
+                    <td> <%= link_to "Request Tutorial", root_url, class: "btn btn-primary" %> </td>
                     </tr>
 
                 
