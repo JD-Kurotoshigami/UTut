@@ -49,7 +49,6 @@ class TutorialController < ApplicationController
      end
 
      def create
-          
           @tutorial = Tutorial.new(tutorial_params)
           @tutorial.tutor_id = current_user.id
           if @tutorial.save
