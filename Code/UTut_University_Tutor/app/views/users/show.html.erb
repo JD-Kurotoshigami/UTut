@@ -54,9 +54,39 @@
             </div>
             <div>
                 <%= f.label "Offered Tutorials"%><br>
-                <!-- this returns a list, loop thru it. 
-                     And maybe Request Tutorial will just have a dropdown? -->
-                <%= (get_offered_tutorials @user)%>
+                <% if offered_tutorials(@user).count == 0%>
+                     <h1 id="signup"> User has no offered tutorials </h1>
+                <% else %>
+                    <table>
+                         <thead>
+                         <tr>
+                             <th>Tutor</th>
+                             <th>Tutee</th>
+                             <th>Subject</th>
+                             <th>Start Time</th>
+                             <th>End Time</th>
+                             <th>Day</th>
+                         </tr>
+                         </thead>
+                         <% offered_tutorials(@user).each do |t| %>
+                    <!-- can be changed to search for tutor -->
+                         
+                         <tr>
+                             <td><%= (get_tutor t) %></td>
+                             <% if (get_tutee t) == "None" %>
+                                <td>None</td>
+                             <% else %>
+                                <td>Taken</td>
+                             <% end%>
+                             <td><%= (get_subject t) %></td>
+                             <td><%= (normalize_time t.start_hr, t.start_min) %></td>
+                             <td><%= (normalize_time t.end_hr, t.end_min) %></td>
+                             <td><%= (get_day t) %></td>
+                         </tr>
+
+                          <% end %>
+                        </table>
+                     <% end %>
 
             </div>
 

@@ -66,7 +66,11 @@
                                      
                                      <tr>
                                          <td><%= (get_tutor t) %></td>
-                                         <td><%= (get_tutee t) %></td>
+                                         <% if (get_tutee t) == "None" %>
+                                            <td>None</td>
+                                         <% else %>
+                                            <td> <%= link_to (get_tutee t), 'users/'+t.tutee_id.to_s %></td>
+                                         <% end%>
                                          <td><%= (get_subject t) %></td>
                                          <td><%= (normalize_time t.start_hr, t.start_min) %></td>
                                          <td><%= (normalize_time t.end_hr, t.end_min) %></td>
@@ -102,7 +106,7 @@
                                 <!-- can be changed to search for tutor -->
                                      <% t=get_tutorial(req.tut_id) %>
                                      <tr>
-                                         <td><%= (get_tutor t) %></td>
+                                         <td><%= link_to (get_tutor t), 'users/'+t.tutor_id.to_s %></td>
                                          <td><%= (get_tutee t) %></td>
                                          <td><%= (get_subject t) %></td>
                                          <td><%= (normalize_time t.start_hr, t.start_min) %></td>

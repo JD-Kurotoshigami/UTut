@@ -48,15 +48,14 @@
           <% @search_result.each do |subject| %>
           <tr>
             <%= form_for(:request, url: tutorial_search_result_path) do |f| %>
-                <td> <%= get_full_name User.find(subject["tutor_id"]) %> </td>
+              <% tutor=User.find(subject["tutor_id"])%>
+                <td> <%= link_to (get_full_name tutor), user_path(tutor) %> </td>
                 <td> <%= subject["subject"] %></td>
                 <td> <%= stringify_schedule subject %></td>
                     <td> <%= link_to "Request Tutorial", (subject['id'].to_s), class: "btn btn-primary" %> 
                     </td>
                     <% end %>
                     </tr>
-
-                
           <% end %>
      </table>
 </div>
