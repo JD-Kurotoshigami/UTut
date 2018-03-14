@@ -111,10 +111,10 @@ module TutorialHelper
 
      def corresponding_requests(tut)
           tut_id = tut.id
-          request_list = Request.where('tut_id = ?', tut_id)
+          request_list = Request.where('tut_id = ? AND status = 0', tut_id)
      end
 
      def tutorial_request
-          Request.where('tutor_id = ?', current_user.id)
+          Request.where('tutor_id = ? AND status = 0', current_user.id)
      end
 end
