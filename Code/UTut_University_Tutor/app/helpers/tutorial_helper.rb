@@ -24,6 +24,8 @@
 #    Science, College of Engineering, University
 #    of the Philippines, Diliman for the AY 2017-2018
 
+
+# JD Mendoza, 03/14/2018 : Added functions for requesting
 module TutorialHelper
      include UsersHelper
      include SessionsHelper
@@ -33,6 +35,10 @@ module TutorialHelper
 
      def has_tutorial_error?
           !tutorial[:error].nil?
+     end
+
+     def request_ongoing?(tutorial, user) 
+          Request.where("tut_id = ? AND tutee_id = ? AND status = 0", tutorial, user).size>0
      end
 
      def has_search_error?

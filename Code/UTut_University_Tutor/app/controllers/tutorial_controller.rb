@@ -24,6 +24,8 @@
 #    Science, College of Engineering, University
 #    of the Philippines, Diliman for the AY 2017-2018
 
+# JD Mendoza 03/14/18: Added functions for requesting for a tutorial
+
 include TutorialHelper
 
 class TutorialController < ApplicationController
@@ -78,7 +80,7 @@ class TutorialController < ApplicationController
                params["Sun"] = '1'
           end
           days = ["Mon"*params["Mon"].to_i,"Tue"*params["Tue"].to_i,"Wed"*params["Wed"].to_i,"Thu"*params["Thu"].to_i,"Fri"*params["Fri"].to_i,"Sat"*params["Sat"].to_i,"Sun"*params["Sun"].to_i]
-          res = Tutorial.where("(subject like ?) AND (day IN (?)) AND ((start_hr*100)+start_min >= ?) AND ((end_hr*100)+end_min <= ?) AND NOT (tutor_id == ?)", 
+          res = Tutorial.where("(subject like ?) AND (day IN (?)) AND ((start_hr*100)+start_min >= ?) AND ((end_hr*100)+end_min <= ?) AND ( tutee_id IS NULL ) AND NOT (tutor_id == ?) ", 
                "%"+params[:subject].upcase.gsub(/\s+/, "")+"%", 
                days, 
                (params[:start_hr].to_i*100)+params[:start_min].to_i, 

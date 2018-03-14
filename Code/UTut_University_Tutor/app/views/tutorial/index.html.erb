@@ -30,6 +30,7 @@
      Jade De Guzman, 02/18/18: table
      Jade De Guzman, 02/21/18: font size and color, table color
      Jade De Guzman, 02/23/18: update profile button
+     JD Mendoza, 03/14/18: Added Pending requests. Added links to non-trivial tutor and tutee
 -->
 
 <!-- 
@@ -103,7 +104,6 @@
                                      </tr>
                                      </thead>
                                      <% your_pending_requests.each do |req| %>
-                                <!-- can be changed to search for tutor -->
                                      <% t=get_tutorial(req.tut_id) %>
                                      <tr>
                                          <td><%= link_to (get_tutor t), 'users/'+t.tutor_id.to_s %></td>

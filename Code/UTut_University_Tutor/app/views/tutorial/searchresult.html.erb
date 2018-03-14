@@ -27,6 +27,7 @@
 
 <!-- 
      JD Mendoza: 02/28/18: File Creation
+     JD Mendoza: 03/14/18: Links to tutors, Removed Request button for pending requests.
 -->
 
 <!-- 
@@ -52,9 +53,13 @@
                 <td> <%= link_to (get_full_name tutor), user_path(tutor) %> </td>
                 <td> <%= subject["subject"] %></td>
                 <td> <%= stringify_schedule subject %></td>
-                    <td> <%= link_to "Request Tutorial", (subject['id'].to_s), class: "btn btn-primary" %> 
-                    </td>
-                    <% end %>
+
+                <% if request_ongoing? subject["id"], current_user.id %>
+                    <td> Pending Approval </td>
+                <% else %>
+                    <td> <%= link_to "Request Tutorial", (subject['id'].to_s), class: "btn btn-primary" %> </td>
+                <% end %>
+            <% end %>
                     </tr>
           <% end %>
      </table>
