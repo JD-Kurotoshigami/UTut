@@ -39,6 +39,15 @@ class TutorialController < ApplicationController
           
      end
 
+     def tut_request
+          tut_request = Request.new
+          tut_request.tutor_id = Tutorial.where("id=?",params[:id]).first.tutor_id
+          tut_request.tutee_id = current_user.id 
+          tut_request.tut_id = params[:id]
+          tut_request.save
+          redirect_to root_url
+     end
+
      def create
           
           @tutorial = Tutorial.new(tutorial_params)

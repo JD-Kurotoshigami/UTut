@@ -47,11 +47,13 @@
 
           <% @search_result.each do |subject| %>
           <tr>
+            <%= form_for(:request, url: tutorial_search_result_path) do |f| %>
                 <td> <%= get_full_name User.find(subject["tutor_id"]) %> </td>
                 <td> <%= subject["subject"] %></td>
                 <td> <%= stringify_schedule subject %></td>
-                  <!-- how to place the information of the row in the current table in here lmao -->
-                    <td> <%= link_to "Request Tutorial", root_url, class: "btn btn-primary" %> </td>
+                    <td> <%= link_to "Request Tutorial", (subject['id'].to_s), class: "btn btn-primary" %> 
+                    </td>
+                    <% end %>
                     </tr>
 
                 
