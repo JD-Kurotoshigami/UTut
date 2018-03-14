@@ -40,12 +40,18 @@ class TutorialController < ApplicationController
      end
 
      def tut_request
-          tut_request = Request.new
-          tut_request.tutor_id = Tutorial.where("id=?",params[:id]).first.tutor_id
-          tut_request.tutee_id = current_user.id 
-          tut_request.tut_id = params[:id]
-          tut_request.save
-          redirect_to root_url
+
+          if Request.where("tut_id=? AND tutee_id=? AND status=0", params[:id], current_user.id).size > 0
+               redirect_to root_url
+          else
+               tut_request = Request.new
+               tut_request.tutor_id = Tutorial.where("id=?",params[:id]).first.tutor_id
+               tut_request.tutee_id = current_user.id 
+               tut_request.tut_id = params[:id]
+               tut_request.status = 0
+               tut_request.save
+               redirect_to root_url
+          end
      end
 
      def create

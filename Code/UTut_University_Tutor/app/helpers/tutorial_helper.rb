@@ -63,7 +63,7 @@ module TutorialHelper
 
      def pending_tutorials(user)
           # preferably add another column in Requests `accepted`, 1 if tutor accepted, 0 if no response yet, -1 if tutor rejected
-          Request.where("tutee_id=?", user.id)
+          Request.where("tutee_id=? AND NOT (status=1) ", user.id)
      end
 
      def your_pending_requests
