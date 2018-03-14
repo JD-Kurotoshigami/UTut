@@ -25,6 +25,7 @@
 #    of the Philippines, Diliman for the AY 2017-2018
 
 # JD Mendoza 03/14/18: Added functions for requesting for a tutorial
+# Jules Segismundo 03/14/18: Added functions for accepting tutee
 
 include TutorialHelper
 
@@ -55,6 +56,39 @@ class TutorialController < ApplicationController
                redirect_to root_url
           end
      end
+
+     def accept_tutee
+          req = Request.where("id = ?", params[:id]).first
+          tutorial = Tutorial.where("id = ?", req.tut_id).first
+          other_reqs = Request.where("tut_id = ? AND status = 0 AND tutee_id <> ?", tutorial.id, req.tutee_id)
+          other_reqs.each do |r|
+               r.status = -1
+               r.save
+          end
+          req.status = 1
+          tutee = req.tutee_id
+          tutorial.tutee_id = tutee
+          tutorial.save
+          req.save
+          redirect_to root_url
+     end
+
+     def reject_tutee
+          req = Request.where("id = ?", params[:id]).first
+          tutorial = Tutorial.where("id = ?", req.tut_id).first
+          other_reqs = Request.where("tut_id = ? AND status = -1 AND tutee_id <> ?", tutorial.id, req.tutee_id)
+          other_reqs.each do |r|
+               r.status = 0
+               r.save
+          end
+          req.status = -1
+          tutee = req.tutee_id
+          tutorial.tutee_id = nil
+          tutorial.save
+          req.save
+          redirect_to root_url
+     end
+   
 
      def create
           @tutorial = Tutorial.new(tutorial_params)

@@ -43,6 +43,7 @@
                <ul class="nav nav-tabs nav-justified">
                     <li class="active"><a data-toggle="tab" href="#tutorial">Offered Tutorials</a></li>
                     <li><a data-toggle="tab" href="#request">Pending Tutorials</a></li>
+                    <li><a data-toggle="tab" href="#accept">Tutee Requests</a></li>
                </ul>
 
                <div class="tab-content">
@@ -86,9 +87,6 @@
                                  </div>
                             </div>
                             <div id="request" class="tab-pane fade">
-
-
-
                             <% if your_pending_requests.count == 0%>
                                  <h1 id="signup"> You have no pending requests </h1>
                             <% else %>
@@ -101,6 +99,7 @@
                                          <th>Start Time</th>
                                          <th>End Time</th>
                                          <th>Day</th>
+                                         <th>Status</th>
                                      </tr>
                                      </thead>
                                      <% your_pending_requests.each do |req| %>
@@ -112,6 +111,7 @@
                                          <td><%= (normalize_time t.start_hr, t.start_min) %></td>
                                          <td><%= (normalize_time t.end_hr, t.end_min) %></td>
                                          <td><%= (get_day t) %></td>
+                                         <td><%= (get_status req)%></td>
                                      </tr>
 
                                       <% end %>
@@ -122,6 +122,47 @@
                                       <%= link_to "Search Tutor", tutorial_search_path, class: "btn btn-lg btn-primary" %>
                                  </div>
                             </div>
+
+                            <div id="accept" class="tab-pane fade">
+                            <% if tutorial_request.count == 0%>
+                                 <h1 id="signup"> No one has requested a tutorial </h1>
+                            <% else %>
+                                <table class="table">
+                                     <thead>
+                                     <tr>
+                                         <th>Tutor</th>
+                                         <th>Tutee</th>
+                                         <th>Subject</th>
+                                         <th>Start Time</th>
+                                         <th>End Time</th>
+                                         <th>Day</th>
+                                         <th>Status</th>
+                                     </tr>
+                                     </thead>
+                                     <% tutorial_request.each do |req| %>
+                                <!-- can be changed to search for tutor -->
+                                     <% t=get_tutorial(req.tut_id) %>
+                                     <tr>
+                                         <td><%= (get_tutor req) %></td>
+                                         <td><%= link_to  (get_tutee req), 'users/'+req.tutee_id.to_s %></td>
+                                         <td><%= (get_subject t) %></td>
+                                         <td><%= (normalize_time t.start_hr, t.start_min) %></td>
+                                         <td><%= (normalize_time t.end_hr, t.end_min) %></td>
+                                         <td><%= (get_day t) %></td>
+                                         <td><%= link_to "Accept", 'tutorial/accept/'+(req.id).to_s, class: "btn btn-primary" %> 
+                                         <%= link_to "Reject", 'tutorial/reject/'+(req.id).to_s , class: "btn btn-primary" %> </td>
+                                     </tr>
+
+                                      <% end %>
+                                    </table>
+                                 <% end %>
+
+                                 <div class="center" style="margin-top: 2%">
+                                      <%= link_to "Search Tutor", tutorial_search_path, class: "btn btn-lg btn-primary" %>
+                                 </div>
+                            </div>
+
+
                </div>
           </div>
 </div>

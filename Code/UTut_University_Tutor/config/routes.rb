@@ -28,6 +28,8 @@ Rails.application.routes.draw do
      get 'tutorial/search/result', to: 'tutorial#searchresult'
      post 'tutorial/search', to: 'tutorial#tutorial_search'
      get 'tutorial/search/:id', to: 'tutorial#tut_request'
+     get 'tutorial/accept/:id/', to: 'tutorial#accept_tutee'
+     get 'tutorial/reject/:id/', to: 'tutorial#reject_tutee'
 
      # post 'tutorial/search/result', to: 'tutorial#tut_request'
 

@@ -26,6 +26,8 @@
 
 
 # JD Mendoza, 03/14/2018 : Added functions for requesting
+# Jules Segismundo: 03/14/2018: Added functions for accept
+
 module TutorialHelper
      include UsersHelper
      include SessionsHelper
@@ -97,4 +99,22 @@ module TutorialHelper
           tut.day
      end
 
+     def get_status(req)
+          if req.status == 0
+               "No response"
+          elsif req.status == 1
+               "Accepted"
+          else
+               "Rejected"
+          end
+     end
+
+     def corresponding_requests(tut)
+          tut_id = tut.id
+          request_list = Request.where('tut_id = ?', tut_id)
+     end
+
+     def tutorial_request
+          Request.where('tutor_id = ?', current_user.id)
+     end
 end
