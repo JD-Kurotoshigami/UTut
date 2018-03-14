@@ -81,6 +81,39 @@
                                  </div>
                             </div>
                             <div id="request" class="tab-pane fade">
+
+
+
+                            <% if your_pending_requests.count == 0%>
+                                 <h1 id="signup"> You have no pending requests </h1>
+                            <% else %>
+                                <table>
+                                     <thead>
+                                     <tr>
+                                         <th>Tutor</th>
+                                         <th>Tutee</th>
+                                         <th>Subject</th>
+                                         <th>Start Time</th>
+                                         <th>End Time</th>
+                                         <th>Day</th>
+                                     </tr>
+                                     </thead>
+                                     <% your_pending_requests.each do |req| %>
+                                <!-- can be changed to search for tutor -->
+                                     <% t=get_tutorial(req.tut_id) %>
+                                     <tr>
+                                         <td><%= (get_tutor t) %></td>
+                                         <td><%= (get_tutee t) %></td>
+                                         <td><%= (get_subject t) %></td>
+                                         <td><%= (normalize_time t.start_hr, t.start_min) %></td>
+                                         <td><%= (normalize_time t.end_hr, t.end_min) %></td>
+                                         <td><%= (get_day t) %></td>
+                                     </tr>
+
+                                      <% end %>
+                                    </table>
+                                 <% end %>
+
                                  <div class="center" style="margin-top: 2%">
                                       <%= link_to "Search Tutor", tutorial_search_path, class: "btn btn-lg btn-primary" %>
                                  </div>

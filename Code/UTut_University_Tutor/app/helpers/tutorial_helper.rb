@@ -54,8 +54,20 @@ module TutorialHelper
           Tutorial.where(tutor_id: user.id)
      end
 
+     def get_tutorial(tut_id)
+          Tutorial.where("id=?", tut_id).first
+     end
      def your_tutorials
           offered_tutorials(current_user)
+     end
+
+     def pending_tutorials(user)
+          # preferably add another column in Requests `accepted`, 1 if tutor accepted, 0 if no response yet, -1 if tutor rejected
+          Request.where("tutee_id=?", user.id)
+     end
+
+     def your_pending_requests
+          pending_tutorials(current_user)
      end
 
      def get_tutor(tut)
