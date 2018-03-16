@@ -164,8 +164,18 @@
                                      </thead>
                                      <% your_ongoing_tutorials.each do |t| %>
                                      <tr>
-                                         <td><%= (get_tutor t) %></td>
-                                         <td><%= link_to  (get_tutee t), 'users/'+t.tutee_id.to_s %></td>
+                                         <td><% if t.tutor_id == current_user.id %>
+                                             <%= (get_tutor t) %>
+                                             <% else %>
+                                             <%= link_to (get_tutor t), 'users/'+t.tutor_id.to_s %>
+                                             <% end %>
+                                         </td>
+                                         <td><% if t.tutee_id == current_user.id %>
+                                             <%= (get_tutee t) %>
+                                             <% else %>
+                                             <%= link_to (get_tutee t), 'users/'+t.tutee_id.to_s %>
+                                             <% end %>
+                                         </td>
                                          <td><%= (get_subject t) %></td>
                                          <td><%= (stringify_schedule t)%></td>
                                          <td> 
@@ -199,10 +209,19 @@
                                      </thead>
                                      <% your_finished_tutorials.each do |t| %>
                                      <tr>
-                                         <td><%= (get_tutor t) %></td>
-                                         <td><%= link_to  (get_tutee t), 'users/'+t.tutee_id.to_s %></td>
-                                         <td><%= (get_subject t) %></td>
-                                         
+                                         <td><% if t.tutor_id == current_user.id %>
+                                             <%= (get_tutor t) %>
+                                             <% else %>
+                                             <%= link_to (get_tutor t), 'users/'+t.tutor_id.to_s %>
+                                             <% end %>
+                                         </td>
+                                         <td><% if t.tutee_id == current_user.id %>
+                                             <%= (get_tutee t) %>
+                                             <% else %>
+                                             <%= link_to (get_tutee t), 'users/'+t.tutee_id.to_s %>
+                                             <% end %>
+                                         </td>
+                                         <td><%= (get_subject t) %></td>                                    
                                          <td><%= (stringify_schedule t)%></td>
                                          <td>
                                              <% if t.tutor_id != current_user.id %>
