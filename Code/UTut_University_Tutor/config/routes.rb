@@ -30,6 +30,9 @@ Rails.application.routes.draw do
      get 'tutorial/search/:id', to: 'tutorial#tut_request'
      get 'tutorial/accept/:id/', to: 'tutorial#accept_tutee'
      get 'tutorial/reject/:id/', to: 'tutorial#reject_tutee'
+     get 'tutorial/remove/:id/', to: 'tutorial#remove_tutee'
+     get 'tutorial/done/:id/', to: 'tutorial#tutorial_done'
+     get 'tutorial/undo/:id/', to: 'tutorial#tutorial_undone'
 
      # post 'tutorial/search/result', to: 'tutorial#tut_request'
 

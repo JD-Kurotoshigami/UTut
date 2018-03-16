@@ -44,6 +44,8 @@
                     <li class="active"><a data-toggle="tab" href="#tutorial">Offered Tutorials</a></li>
                     <li><a data-toggle="tab" href="#request">Pending Tutorials</a></li>
                     <li><a data-toggle="tab" href="#accept">Tutee Requests</a></li>
+                    <li><a data-toggle="tab" href="#ongoing">Ongoing Tutorials</a></li>
+                    <li><a data-toggle="tab" href="#done">Finished Tutorials</a></li>
                </ul>
 
                <div class="tab-content">
@@ -52,15 +54,13 @@
                             <% if your_tutorials.count == 0%>
                                  <h1 id="signup"> You have no offered tutorials </h1>
                             <% else %>
-                                <table>
+                                <table class="table">
                                      <thead>
                                      <tr>
                                          <th>Tutor</th>
                                          <th>Tutee</th>
                                          <th>Subject</th>
-                                         <th>Start Time</th>
-                                         <th>End Time</th>
-                                         <th>Day</th>
+                                         <th>Schedule</th>
                                      </tr>
                                      </thead>
                                      <% your_tutorials.each do |t| %>
@@ -73,10 +73,8 @@
                                          <% else %>
                                             <td> <%= link_to (get_tutee t), 'users/'+t.tutee_id.to_s %></td>
                                          <% end%>
-                                         <td><%= (get_subject t) %></td>
-                                         <td><%= (normalize_time t.start_hr, t.start_min) %></td>
-                                         <td><%= (normalize_time t.end_hr, t.end_min) %></td>
-                                         <td><%= (get_day t) %></td>
+                                         <td><%= (get_subject t) %></td>                                         
+                                         <td><%= (stringify_schedule t)%></td>
                                      </tr>
 
                                       <% end %>
@@ -90,15 +88,13 @@
                             <% if your_pending_requests.count == 0%>
                                  <h1 id="signup"> You have no pending requests </h1>
                             <% else %>
-                                <table>
+                                <table class="table">
                                      <thead>
                                      <tr>
                                          <th>Tutor</th>
                                          <th>Tutee</th>
                                          <th>Subject</th>
-                                         <th>Start Time</th>
-                                         <th>End Time</th>
-                                         <th>Day</th>
+                                         <th>Schedule</th>
                                          <th>Status</th>
                                      </tr>
                                      </thead>
@@ -108,9 +104,8 @@
                                          <td><%= link_to (get_tutor t), 'users/'+t.tutor_id.to_s %></td>
                                          <td><%= (get_tutee t) %></td>
                                          <td><%= (get_subject t) %></td>
-                                         <td><%= (normalize_time t.start_hr, t.start_min) %></td>
-                                         <td><%= (normalize_time t.end_hr, t.end_min) %></td>
-                                         <td><%= (get_day t) %></td>
+                                         
+                                         <td><%= (stringify_schedule t)%></td>
                                          <td><%= (get_status req)%></td>
                                      </tr>
 
@@ -133,22 +128,17 @@
                                          <th>Tutor</th>
                                          <th>Tutee</th>
                                          <th>Subject</th>
-                                         <th>Start Time</th>
-                                         <th>End Time</th>
-                                         <th>Day</th>
-                                         <th>Status</th>
+                                         <th>Schedule</th>
+                                         <th>Action</th>
                                      </tr>
                                      </thead>
                                      <% tutorial_request.each do |req| %>
-                                <!-- can be changed to search for tutor -->
                                      <% t=get_tutorial(req.tut_id) %>
                                      <tr>
                                          <td><%= (get_tutor req) %></td>
                                          <td><%= link_to  (get_tutee req), 'users/'+req.tutee_id.to_s %></td>
                                          <td><%= (get_subject t) %></td>
-                                         <td><%= (normalize_time t.start_hr, t.start_min) %></td>
-                                         <td><%= (normalize_time t.end_hr, t.end_min) %></td>
-                                         <td><%= (get_day t) %></td>
+                                         <td><%= (stringify_schedule t)%></td>
                                          <td><%= link_to "Accept", 'tutorial/accept/'+(req.id).to_s, class: "btn btn-primary" %> 
                                          <%= link_to "Reject", 'tutorial/reject/'+(req.id).to_s , class: "btn btn-primary" %> </td>
                                      </tr>
@@ -156,12 +146,76 @@
                                       <% end %>
                                     </table>
                                  <% end %>
-
-                                 <div class="center" style="margin-top: 2%">
-                                      <%= link_to "Search Tutor", tutorial_search_path, class: "btn btn-lg btn-primary" %>
-                                 </div>
                             </div>
 
+                            <div id="ongoing" class="tab-pane fade">
+                            <% if your_ongoing_tutorials.count == 0%>
+                                 <h1 id="signup"> You have no ongoing tutorials </h1>
+                            <% else %>
+                                <table class="table">
+                                     <thead>
+                                     <tr>
+                                         <th>Tutor</th>
+                                         <th>Tutee</th>
+                                         <th>Subject</th>
+                                         <th>Schedule</th>
+                                         <th>Action</th>
+                                     </tr>
+                                     </thead>
+                                     <% your_ongoing_tutorials.each do |t| %>
+                                     <tr>
+                                         <td><%= (get_tutor t) %></td>
+                                         <td><%= link_to  (get_tutee t), 'users/'+t.tutee_id.to_s %></td>
+                                         <td><%= (get_subject t) %></td>
+                                         <td><%= (stringify_schedule t)%></td>
+                                         <td> 
+                                         <% if t.tutor_id != current_user.id %>
+                                            
+                                         <% else %>
+                                            <%= link_to "Done", 'tutorial/done/'+(t.id).to_s , class: "btn btn-primary" %> 
+                                            <%= link_to "Remove Tutee", 'tutorial/remove/'+(t.id).to_s, class: "btn btn-primary" %>
+                                         <% end %>
+                                         </td>
+                                     </tr>
+
+                                      <% end %>
+                                    </table>
+                                 <% end %>
+                            </div>
+
+                            <div id="done" class="tab-pane fade">
+                            <% if your_finished_tutorials.count == 0%>
+                                 <h1 id="signup"> You haven't finished any tutorial </h1>
+                            <% else %>
+                                <table class="table">
+                                     <thead>
+                                     <tr>
+                                         <th>Tutor</th>
+                                         <th>Tutee</th>
+                                         <th>Subject</th>
+                                         <th>Schedule</th>
+                                         <th>Action</th>
+                                     </tr>
+                                     </thead>
+                                     <% your_finished_tutorials.each do |t| %>
+                                     <tr>
+                                         <td><%= (get_tutor t) %></td>
+                                         <td><%= link_to  (get_tutee t), 'users/'+t.tutee_id.to_s %></td>
+                                         <td><%= (get_subject t) %></td>
+                                         
+                                         <td><%= (stringify_schedule t)%></td>
+                                         <td>
+                                             <% if t.tutor_id != current_user.id %>
+
+                                             <% else %>
+                                                <%= link_to "Undo", 'tutorial/undo/'+(t.id).to_s, class: "btn btn-primary" %> 
+                                             <% end %>
+                                     </tr>
+
+                                      <% end %>
+                                    </table>
+                                 <% end %>
+                            </div>
 
                </div>
           </div>

@@ -27,6 +27,7 @@
 
 # JD Mendoza, 03/14/2018 : Added functions for requesting
 # Jules Segismundo: 03/14/2018: Added functions for accept
+# Jules Segismundo: 03/16/2018: Added functions for ongoing and finished
 
 module TutorialHelper
      include UsersHelper
@@ -59,7 +60,7 @@ module TutorialHelper
           end
      end
      def offered_tutorials(user)
-          Tutorial.where(tutor_id: user.id)
+          Tutorial.where('tutor_id = ? AND done == 0', current_user.id)
      end
 
      def get_tutorial(tut_id)
@@ -116,5 +117,17 @@ module TutorialHelper
 
      def tutorial_request
           Request.where('tutor_id = ? AND status = 0', current_user.id)
+     end
+
+     def your_ongoing_tutorials
+          yours = Tutorial.where('tutor_id = ? AND tutee_id IS NOT NULL AND done == 0', current_user.id)
+          others = Tutorial.where('(tutee_id = ? AND done == 0)', current_user.id)
+          yours + others
+     end
+
+     def your_finished_tutorials
+          yours = Tutorial.where('tutor_id = ? AND done == 1', current_user.id)
+          others = Tutorial.where('tutee_id = ? AND done == 1', current_user)
+          yours + others
      end
 end

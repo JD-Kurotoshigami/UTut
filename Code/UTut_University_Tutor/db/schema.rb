@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314054427) do
+ActiveRecord::Schema.define(version: 20180316033436) do
 
   create_table "requests", force: :cascade do |t|
     t.integer "tut_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20180314054427) do
     t.integer "end_min"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "done"
   end
 
   create_table "users", force: :cascade do |t|

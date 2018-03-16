@@ -26,6 +26,7 @@
 
 # JD Mendoza 03/14/18: Added functions for requesting for a tutorial
 # Jules Segismundo 03/14/18: Added functions for accepting tutee
+# Jules Segismundo 03/16/18: Added functions for removing a tutee from a tutorial, finishing a tutorial, and undoing a finished tutorial
 
 include TutorialHelper
 
@@ -86,6 +87,32 @@ class TutorialController < ApplicationController
           tutorial.tutee_id = nil
           tutorial.save
           req.save
+          redirect_to root_url
+     end
+
+     def remove_tutee
+          tut = Tutorial.where("id = ?", params[:id]).first
+          reqs = Request.where("tut_id = ?", tut.id)
+          tut.tutee_id = nil
+          reqs.each do |r|
+               r.status = 0
+               r.save
+          end
+          tut.save
+          redirect_to root_url
+     end
+
+     def tutorial_done
+          tut = Tutorial.where("id = ?", params[:id]).first
+          tut.done = 1
+          tut.save
+          redirect_to root_url
+     end
+
+     def tutorial_undone
+          tut = Tutorial.where("id = ?", params[:id]).first
+          tut.done = 0
+          tut.save
           redirect_to root_url
      end
    
