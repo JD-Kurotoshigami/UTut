@@ -5,9 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-@user = User.create(username: '000000000', firstname: 'Event', lastname: 'One', sex: 'Male', password: 'criticalisaw', password_confirmation: 'criticalisaw').save(validate: false)
-@user = User.create(username: '201500002', firstname: 'Wilson', lastname: 'Tan', sex: 'Male', password: 'cs145',password_confirmation: 'cs145').save(validate: false)
-@user = User.create(username: '201500001', firstname: 'Juan Felipe', lastname: 'Coronel', sex: 'Male', password: '123456', password_confirmation: '123456').save(validate: false)
+@user = User.create(username: '201800001', firstname: 'Event', lastname: 'One', sex: 'Male', password: 'criticalisaw', password_confirmation: 'criticalisaw').save(validate: false)
+@user = User.create(username: '201800002', firstname: 'Student', lastname: 'Student', sex: 'Male', password: 'password',password_confirmation: 'cs145').save(validate: false)
 @timeslot = Timeslot.create(start_hr: 0 , start_min: 0 , end_hr: 0 , end_min: 15 ).save(validate: false)
 @timeslot = Timeslot.create(start_hr: 0 , start_min: 15 , end_hr: 0 , end_min: 30 ).save(validate: false)
 @timeslot = Timeslot.create(start_hr: 0 , start_min: 30 , end_hr: 0 , end_min: 45 ).save(validate: false)

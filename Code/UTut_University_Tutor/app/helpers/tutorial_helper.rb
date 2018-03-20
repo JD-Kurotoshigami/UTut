@@ -60,7 +60,7 @@ module TutorialHelper
           end
      end
      def offered_tutorials(user)
-          Tutorial.where('tutor_id = ? AND done == 0', current_user.id)
+          Tutorial.where('tutor_id = ? AND done == 0', user.id)
      end
 
      def get_tutorial(tut_id)

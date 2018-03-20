@@ -120,6 +120,7 @@ class TutorialController < ApplicationController
      def create
           @tutorial = Tutorial.new(tutorial_params)
           @tutorial.tutor_id = current_user.id
+          @tutorial.done = 0
           if @tutorial.save
                redirect_to root_url
           else
