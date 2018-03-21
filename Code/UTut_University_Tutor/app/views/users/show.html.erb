@@ -37,62 +37,75 @@
 
 <div class="container">
      <% provide(:title, "Other Profile") %>
+     <div class="container">
+               <ul class="nav nav-tabs nav-justified">
+                    <li class="active"><a data-toggle="tab" href="#profile">Profile</a></li>
+                    <li><a data-toggle="tab" href="#tutorial">Offered Tutorial</a></li>
+               </ul>
 
-     <div class="col-md-4">
-        <div class="row", id="form">
-            <%= form_for(@user) do |f| %>
-            <div>
-                <%= f.label "Name"%>
-                <%= ": "+(get_full_name @user).titleize %>
-            </div>
-            <div>
-                <%= f.label "Sex"%>
-                <%= ": "+(get_sex @user)%>
-            </div>
-            <div>
-                <%= f.label "Description"%>
-                <%= ": "+(get_description @user) %>
-            </div>
-            <div>
-                <%= f.label "Offered Tutorials"%><br>
-                <% if offered_tutorials(@user).count == 0%>
-                     <h1 id="signup"> User has no offered tutorials </h1>
-                <% else %>
-                    <table>
-                         <thead>
-                         <tr>
-                             <th>Tutor</th>
-                             <th>Tutee</th>
-                             <th>Subject</th>
-                             <th>Start Time</th>
-                             <th>End Time</th>
-                             <th>Day</th>
-                         </tr>
-                         </thead>
-                         <% offered_tutorials(@user).each do |t| %>
-                    <!-- can be changed to search for tutor -->
+               <div class="tab-content">
+                    <div id="account" class="tab-pane fade in active">
+                         <div class="row", id="form">
+                              <%= form_for(@user) do |f| %>
+                              <div class="container">
+                                   <div class="col-md-1"></div>
+                                   <div class="col-md-5", id="deets">
+                                        <div>
+                                             <%= f.label "Name:"%>
+                                             <%= (get_full_name @user).titleize %>
+                                        </div>
+                                        <div>
+                                             <%= f.label "Sex:"%>
+                                             <%= (get_sex @user)%>
+                                        </div>
+                                   </div>
+                                   <div class="col-md-5", id="deets">
+                                        <div>
+                                             <%= f.label "Description:"%>
+                                             <%= (get_description @user) %>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div id="tutorial" class="tab-pane fade" style="margin-top: 30px;">
+                         <div class="container">
+                              <% if offered_tutorials(@user).count == 0%>
+                                   <h1 id="signup"> User has no offered tutorials </h1>
+                              <% else %>
+                                   <table>
+                                        <thead>
+                                             <tr>
+                                                  <th>Tutor</th>
+                                                  <th>Tutee</th>
+                                                  <th>Subject</th>
+                                                  <th>Start Time</th>
+                                                  <th>End Time</th>
+                                                  <th>Day</th>
+                                             </tr>
+                                        </thead>
+                                        <% offered_tutorials(@user).each do |t| %>
+                                        <!-- can be changed to search for tutor -->
                          
-                         <tr>
-                             <td><%= (get_tutor t) %></td>
-                             <% if (get_tutee t) == "None" %>
-                                <td>None</td>
-                             <% else %>
-                                <td>Taken</td>
-                             <% end%>
-                             <td><%= (get_subject t) %></td>
-                             <td><%= (normalize_time t.start_hr, t.start_min) %></td>
-                             <td><%= (normalize_time t.end_hr, t.end_min) %></td>
-                             <td><%= (get_day t) %></td>
-                         </tr>
+                                        <tr>
+                                             <td><%= (get_tutor t) %></td>
+                                             <% if (get_tutee t) == "None" %>
+                                                  <td>None</td>
+                                             <% else %>
+                                                  <td>Taken</td>
+                                             <% end%>
+                                             <td><%= (get_subject t) %></td>
+                                             <td><%= (normalize_time t.start_hr, t.start_min) %></td>
+                                             <td><%= (normalize_time t.end_hr, t.end_min) %></td>
+                                             <td><%= (get_day t) %></td>
+                                        </tr>
 
-                          <% end %>
-                        </table>
-                     <% end %>
-
-            </div>
-
+                                        <% end %>
+                                   </table>
+                              <% end %>
+                    </div>
             <% end %>
         </div>
      </div>
-
 </div>
