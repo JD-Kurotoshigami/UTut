@@ -50,9 +50,12 @@
                             <% if your_tutorials.count == 0%>
                                  <h1> You have no offered tutorials </h1>
                             <% else %>
+                                <div class="container">
+                              <div class="col-md-1"></div>
+                              <div class="col-md-5">
+                                <h1>As Tutor:</h1>
                                 <table>
                                      <tr>
-                                         <th>Tutor</th>
                                          <th>Tutee</th>
                                          <th>Subject</th>
                                          <th>Start Time</th>
@@ -63,7 +66,6 @@
                                 <!-- can be changed to search for tutor -->
                                      
                                      <tr>
-                                         <td><%= (get_tutor t) %></td>
                                          <td><%= (get_tutee t) %></td>
                                          <td><%= (get_subject t) %></td>
                                          <td><%= (normalize_time t.start_hr, t.start_min) %></td>
@@ -72,7 +74,32 @@
                                      </tr>
 
                                       <% end %>
-                                    </table>
+                                    </table> 
+                              </div>
+                              <div class="col-md-5">
+                                <h1>As Tutee:</h1>
+                                <table>
+                                     <tr>
+                                         <th>Tutor</th>
+                                         <th>Subject</th>
+                                         <th>Start Time</th>
+                                         <th>End Time</th>
+                                         <th>Day</th>
+                                     </tr>
+                                     <% your_tutorials.each do |t| %>
+                                <!-- can be changed to search for tutor -->
+                                     
+                                     <tr>
+                                         <td><%= (get_tutor t) %></td>
+                                         <td><%= (get_subject t) %></td>
+                                         <td><%= (normalize_time t.start_hr, t.start_min) %></td>
+                                         <td><%= (normalize_time t.end_hr, t.end_min) %></td>
+                                         <td><%= (get_day t) %></td>
+                                     </tr>
+
+                                      <% end %>
+                                    </table> 
+                              </div>
                                  <% end %>
                                  <%= link_to "Offer Tutorial", new_tutorial_path, class: "btn btn-lg btn-primary" %>
                             </div>
