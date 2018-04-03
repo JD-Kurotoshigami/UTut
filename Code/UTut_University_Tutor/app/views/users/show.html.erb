@@ -29,6 +29,8 @@
      Jules Segismundo, 02/02/18: file creation
      JD Mendoza, 02/14/18: Now shows details
      JD Mendoza, 03/14/18: Added offered tutorial(s)
+     Jade De Guzman, 03/21/18: Other profile view fixed
+     Jules Segismundo, 03/23/18: Fixed a bug that doesn't show profile again once tutorials tab was clicked
 -->
 
 <!-- 
@@ -44,7 +46,7 @@
                </ul>
 
                <div class="tab-content">
-                    <div id="account" class="tab-pane fade in active">
+                    <div id="profile" class="tab-pane fade in active">
                          <div class="row", id="form">
                               <%= form_for(@user) do |f| %>
                               <div class="container">

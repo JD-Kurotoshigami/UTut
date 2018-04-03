@@ -1,0 +1,25 @@
+Valid if 
+New.start > Old.end
+OR
+New.end < Old.start
+For all Old in Tutorials where Old.day=New.day and Old.tutor = @currentuser
+
+new = []
+old = ()
+
+
+
+case1: (     )  [    ]   new.start > old.end valid agad
+
+case2: [   ] (    ) new.end < old.start valid too
+
+
+INVALIDS
+0  1   2   3
+case3: (  [   ]   )  new.end < old end AND new.start > old.start NO
+
+case4 : [ ( ) ] new.start < old.start AND new.end > old.end
+
+case4: (  [   )   ]  new.start > old.start AND new.start < old.end
+
+case5: [  (  ]  )  old.start > new.start AND old.start < new.end
