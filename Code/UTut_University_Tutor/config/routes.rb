@@ -6,7 +6,9 @@ Rails.application.routes.draw do
      get 'users/new'
 
      resources :tutorial
-     resources :users
+     resources :users do
+          resources :reviews, only: :create
+     end
      resources :sessions
 
      root 'welcome#index'

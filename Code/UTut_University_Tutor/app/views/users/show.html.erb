@@ -43,6 +43,7 @@
                <ul class="nav nav-tabs nav-justified">
                     <li class="active"><a data-toggle="tab" href="#profile">Profile</a></li>
                     <li><a data-toggle="tab" href="#tutorial">Offered Tutorial</a></li>
+                    <li><a data-toggle="tab" href="#review">Reviews</a></li>
                </ul>
 
                <div class="tab-content">
@@ -68,6 +69,7 @@
                                         </div>
                                    </div>
                               </div>
+                              <% end %>
                          </div>
                     </div>
 
@@ -106,8 +108,68 @@
                                         <% end %>
                                    </table>
                               <% end %>
+                              </div>
                     </div>
-            <% end %>
+
+                    <div id="review" class="tab-pane fade" style="margin-top: 30px;">
+                         <div class="container">
+                           Add Review:
+                           <%= form_for(Review.new, :url => user_reviews_path(@user)) do |revf| %>
+                            <div class='field'>
+                              <%= revf.label :body, "Review" %> <br>
+                              <%= revf.text_area :body %> 
+                            </div>
+                            <div>
+                                 <%= revf.label :rating, "Rating:" %> 
+                            </div>
+                            <div class="container">
+                                 <div class="col-md-5">
+                                      <div class="field">
+                                           <div class="radio">
+                                                <%= revf.radio_button :rating, 1%>
+                                                <%= revf.label :rating, "1" %>
+                                           </div> 
+                                           <div class="radio">
+                                                <%= revf.radio_button :rating, 2%>
+                                                <%= revf.label :rating, "2" %>
+                                           </div> 
+                                           <div class="radio">
+                                                <%= revf.radio_button :rating, 3%>
+                                                <%= revf.label :rating, "3" %>
+                                           </div> 
+                                           <div class="radio">
+                                                <%= revf.radio_button :rating, 4%>
+                                                <%= revf.label :rating, "4" %>
+                                           </div> 
+                                           <div class="radio">
+                                                <%= revf.radio_button :rating, 5%>
+                                                <%= revf.label :rating, "5" %>
+                                           </div> 
+                                      </div>
+                                 </div>
+                            </div>
+                            <div class='action'>
+                              <%= revf.submit %>
+                            </div>
+                          <% end %>
+                           <table>
+                            <thead>
+                              <tr>
+                                <th> Review </th>
+                                <th> Rating </th>
+                              </tr>
+                            </thead>
+
+                            <% @user.reviews.each do |r| %>
+                            <tr>
+                              <td> <%= r.body %> </td>
+                              <td> <%= r.rating %> </td>
+                            <tr>
+                            <% end %>
+                           </table>
+
+                         </div>  
+                    </div>
         </div>
      </div>
 </div>

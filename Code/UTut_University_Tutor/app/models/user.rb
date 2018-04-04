@@ -49,6 +49,8 @@ class User < ApplicationRecord
      validates :sex, presence: true
      has_secure_password
      validates :password, length: { minimum: 5, message: "is too short" }, allow_nil: true
+
+     has_many :reviews
 #validates_with PasswordValidator, fields: [:password]
 end
 

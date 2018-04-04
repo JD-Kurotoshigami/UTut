@@ -42,6 +42,7 @@
                <ul class="nav nav-tabs nav-justified">
                     <li class="active"><a data-toggle="tab" href="#account">Your Account</a></li>
                     <li><a data-toggle="tab" href="#schedule">My Schedule</a></li>
+                    <li><a data-toggle="tab" href="#review">My Reviews</a></li>
                </ul>
 
                <div class="tab-content">
@@ -127,7 +128,27 @@
                                  </table>
                                  <% _min=0 %>
                               </div>
-                    </div>  
+                              </div>
+                    </div> 
+                    <div id="review" class="tab-pane fade" style="margin-top: 30px;">
+                         <div class="container">
+                           <table>
+                            <thead>
+                              <tr>
+                                <th> Review </th>
+                                <th> Rating </th>
+                              </tr>
+                            </thead>
+                            <% @user.reviews.each do |r| %>
+                            <tr>
+                              <td> <%= r.body %> </td>
+                              <td> <%= r.rating %> </td>
+                            </tr>
+                            <% end %>
+                           </table>
+
+                         </div>  
+                    </div> 
                </div>
           </div>
      </div>
