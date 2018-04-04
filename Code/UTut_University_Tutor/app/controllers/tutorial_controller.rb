@@ -115,16 +115,20 @@ class TutorialController < ApplicationController
           tut.save
           redirect_to root_url
      end
-   
 
      def create
           @tutorial = Tutorial.new(tutorial_params)
           @tutorial.tutor_id = current_user.id
           @tutorial.done = 0
-          if @tutorial.save
-               redirect_to root_url
-          else
+          if will_conflict? @tutorial, current_user
+               @tutorial.errors.add(@tutorial.day, "scheduled tutorial offer conflicts with an existing tutorial.")
                render 'new'
+          else      
+               if @tutorial.save
+                    redirect_to root_url
+               else
+                    render 'new'
+               end
           end
      end
 

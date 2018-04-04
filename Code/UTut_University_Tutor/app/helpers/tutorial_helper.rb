@@ -130,4 +130,27 @@ module TutorialHelper
           others = Tutorial.where('tutee_id = ? AND done == 1', current_user)
           yours + others
      end
+
+     def is_conflict?(old_t, new_t)
+          new_start = new_t.start_hr*100+new_t.start_min
+          new_end = new_t.end_hr*100+new_t.end_min
+          old_start = old_t.start_hr*100+old_t.start_min
+          old_end = old_t.end_hr*100+old_t.end_min
+
+          !(new_start >= old_end or new_end <= old_start)
+     end
+
+     def will_conflict?(tut, user)
+          #get all of the user's tutorials for that day
+          check = Tutorial.where("((tutor_id = ?) OR (tutee_id = ? AND done = 0 )) AND (day = ?)", user.id, user.id, tut.day)
+          con = false
+          check.each do |t|
+               if is_conflict? t, tut
+                    con = true
+                    break
+               end
+          end
+          con
+     end
+
 end
