@@ -154,7 +154,6 @@
                                  <% else %>
                                       <% your_ongoing_tutorials.each do |t| %>
                                            <% if t.tutor_id == current_user.id %>
-                                                <div class="col-md-1"></div>
                                                 <div class="col-md-6">
                                                      <h1 id="signup">As Tutor</h1>
                                                      <table class="table">
@@ -178,6 +177,7 @@
                                                     </table>
                                                   </div>
                                            <% else %>
+                                                <div class="col-md-1"></div>
                                                 <div class="col-md-5">
                                                        <h1 id="signup">As Tutee</h1>
                                                        <table class="table">

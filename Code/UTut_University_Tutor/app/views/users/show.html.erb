@@ -78,103 +78,42 @@
                               <% if offered_tutorials(@user).count == 0%>
                                    <h1 id="signup"> User has no offered tutorials </h1>
                               <% else %>
-                                   <% offered_tutorials(@user).each do |t| %>
-                                        <% if (get_tutor t) == (get_full_name @user) %>
-                                             <div class="col-md-5">
-                                                  <table>
-                                                       <thead>
-                                                            <tr>
-                                                                 <th>Tutee</th>
-                                                                 <th>Subject</th>
-                                                                 <th>Start Time</th>
-                                                                 <th>End Time</th>
-                                                                 <th>Day</th>
-                                                            </tr>
-                                                       </thead>
+                                   <table>
+                                        <thead>
+                                             <tr>
+                                                  <th>Tutor</th>
+                                                  <th>Tutee</th>
+                                                  <th>Subject</th>
+                                                  <th>Start Time</th>
+                                                  <th>End Time</th>
+                                                  <th>Day</th>
+                                             </tr>
+                                        </thead>
+                                        <% offered_tutorials(@user).each do |t| %>
+                                        <!-- can be changed to search for tutor -->
                          
-                                                       <tr>
-                                                            <% if (get_tutee t) == "None" %>
-                                                                 <td>None</td>
-                                                            <% else %>
-                                                                 <td>Taken</td>
-                                                            <% end %>
-                                                            <td><%= (get_subject t) %></td>
-                                                            <td><%= (normalize_time t.start_hr, t.start_min) %></td>
-                                                            <td><%= (normalize_time t.end_hr, t.end_min) %></td>
-                                                            <td><%= (get_day t) %></td>
-                                                       </tr>              
-                                                  </table>
-                                             </div>
-                                        <% else %>
-                                             <div class="col-md-5">
-                                                  <table>
-                                                       <thead>
-                                                            <tr>
-                                                                 <th>Tutor</th>
-                                                                 <th>Subject</th>
-                                                                 <th>Start Time</th>
-                                                                 <th>End Time</th>
-                                                                 <th>Day</th>
-                                                            </tr>
-                                                       </thead>
-                                                       <tr>
-                                                            <td><%= (get_tutor t) %></td>
-                                                            <td><%= (get_subject t) %></td>
-                                                            <td><%= (normalize_time t.start_hr, t.start_min) %></td>
-                                                            <td><%= (normalize_time t.end_hr, t.end_min) %></td>
-                                                            <td><%= (get_day t) %></td>
-                                                       </tr>
-                                                  </table>
-                                              </div>
-                                         <% end %>
-                                         <% end %>
-                                   <% end %>
-                                   <% end %>
-                            </div>
+                                        <tr>
+                                             <td><%= (get_tutor t) %></td>
+                                             <% if (get_tutee t) == "None" %>
+                                                  <td>None</td>
+                                             <% else %>
+                                                  <td>Taken</td>
+                                             <% end%>
+                                             <td><%= (get_subject t) %></td>
+                                             <td><%= (normalize_time t.start_hr, t.start_min) %></td>
+                                             <td><%= (normalize_time t.end_hr, t.end_min) %></td>
+                                             <td><%= (get_day t) %></td>
+                                        </tr>
+
+                                        <% end %>
+                                   </table>
+                              <% end %>
+                              </div>
                     </div>
 
-
                     <div id="review" class="tab-pane fade" style="margin-top: 30px;">
+
                          <div class="container">
-                           Add Review:
-                           <%= form_for(Review.new, :url => user_reviews_path(@user)) do |revf| %>
-                            <div class='field'>
-                              <%= revf.label :body, "Review" %> <br>
-                              <%= revf.text_area :body %> 
-                            </div>
-                            <div>
-                                 <%= revf.label :rating, "Rating:" %> 
-                            </div>
-                            <div class="container">
-                                 <div class="col-md-5">
-                                      <div class="field">
-                                           <div class="radio">
-                                                <%= revf.radio_button :rating, 1%>
-                                                <%= revf.label :rating, "1" %>
-                                           </div> 
-                                           <div class="radio">
-                                                <%= revf.radio_button :rating, 2%>
-                                                <%= revf.label :rating, "2" %>
-                                           </div> 
-                                           <div class="radio">
-                                                <%= revf.radio_button :rating, 3%>
-                                                <%= revf.label :rating, "3" %>
-                                           </div> 
-                                           <div class="radio">
-                                                <%= revf.radio_button :rating, 4%>
-                                                <%= revf.label :rating, "4" %>
-                                           </div> 
-                                           <div class="radio">
-                                                <%= revf.radio_button :rating, 5%>
-                                                <%= revf.label :rating, "5" %>
-                                           </div> 
-                                      </div>
-                                 </div>
-                            </div>
-                            <div class='action'>
-                              <%= revf.submit %>
-                            </div>
-                          <% end %>
                            <table>
                             <thead>
                               <tr>
@@ -190,8 +129,44 @@
                             <tr>
                             <% end %>
                            </table>
+                           <h1 class="center" id="signup">Add Review:</h1>
+                           <%= form_for(Review.new, :url => user_reviews_path(@user)) do |revf| %>
+                            <div class="center">
+                              <%= revf.text_area :body %> 
+                            </div>
+                                 <div class="center">
+                                      <ul class="list-inline">
+                                            <li class="radio" id="deets">
+                                                <%= revf.radio_button :rating, 1%>
+                                                <%= revf.label :rating, "1" %>
+                                            </li>
+                                            <li class="radio" id="deets">
+                                                <%= revf.radio_button :rating, 2%>
+                                                <%= revf.label :rating, "2" %>
+                                            </li>
+                                            <li class="radio" id="deets">
+                                                <%= revf.radio_button :rating, 3%>
+                                                <%= revf.label :rating, "3" %>
+                                            </li>
+                                            <li class="radio" id="deets">
+                                                <%= revf.radio_button :rating, 4%>
+                                                <%= revf.label :rating, "4" %>
+                                            </li>
+                                            <li class="radio" id="deets">
+                                                <%= revf.radio_button :rating, 5%>
+                                                <%= revf.label :rating, "5" %>
+                                            </li>
+                                      </ul>
+                                 </div>
+                            <div class="center">
+                            <div class='action'>
+                              <%= revf.submit %>
+                            </div>
+                          </div>
+                          <% end %>
 
                          </div>  
                     </div>
         </div>
+     </div>
 </div>
