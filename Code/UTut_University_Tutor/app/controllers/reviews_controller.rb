@@ -2,8 +2,10 @@ class ReviewsController < ApplicationController
 
      def create
           @user = User.find(params[:user_id])
-
-          if @user.reviews.create(review_params)
+          rev = @user.reviews.create(review_params)
+          if rev
+               rev.reviewer_id = current_user.id
+               rev.save
                redirect_to @user, notice: 'Review has been added'
           else
                redirect_to @user, alert: 'Error adding review'
