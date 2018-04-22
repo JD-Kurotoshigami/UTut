@@ -3,20 +3,16 @@
     Mendoza, John Dominic
     Segismundo, Julio 
     De Guzman, Nicole Jade            
-
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
     This is a course requirement for CS 192
     Software Engineering II under the
     supervision of Asst. Prof. Ma. Rowena C.
@@ -92,6 +88,7 @@
                                         <% offered_tutorials(@user).each do |t| %>
                                         <!-- can be changed to search for tutor -->
                          
+<<<<<<< HEAD
                                         <tr>
                                              <td><%= (get_tutor t) %></td>
                                              <% if (get_tutee t) == "None" %>
@@ -104,6 +101,47 @@
                                              <td><%= (normalize_time t.end_hr, t.end_min) %></td>
                                              <td><%= (get_day t) %></td>
                                         </tr>
+=======
+                                                       <tr>
+                                                            <% if (get_tutee t) == "None" %>
+                                                                 <td>None</td>
+                                                            <% else %>
+                                                                 <td>Taken</td>
+                                                            <% end %>
+                                                            <td><%= (get_subject t) %></td>
+                                                            <td><%= (normalize_time t.start_hr, t.start_min) %></td>
+                                                            <td><%= (normalize_time t.end_hr, t.end_min) %></td>
+                                                            <td><%= (get_day t) %></td>
+                                                       </tr>              
+                                                  </table>
+                                             </div>
+                                        <% else %>
+                                             <div class="col-md-5">
+                                                  <table>
+                                                       <thead>
+                                                            <tr>
+                                                                 <th>Tutor</th>
+                                                                 <th>Subject</th>
+                                                                 <th>Start Time</th>
+                                                                 <th>End Time</th>
+                                                                 <th>Day</th>
+                                                            </tr>
+                                                       </thead>
+                                                       <tr>
+                                                            <td><%= (get_tutor t) %></td>
+                                                            <td><%= (get_subject t) %></td>
+                                                            <td><%= (normalize_time t.start_hr, t.start_min) %></td>
+                                                            <td><%= (normalize_time t.end_hr, t.end_min) %></td>
+                                                            <td><%= (get_day t) %></td>
+                                                       </tr>
+                                                  </table>
+                                              </div>
+                                         <% end %>
+                                         <% end %>
+                                   <% end %>
+                            </div>
+                    </div>
+>>>>>>> 779324234edd9f974b7c4e4ddd79e45329c0705c
 
                                         <% end %>
                                    </table>
@@ -112,6 +150,7 @@
                     </div>
 
                     <div id="review" class="tab-pane fade" style="margin-top: 30px;">
+<<<<<<< HEAD
 
                          <div class="container">
                            <table>
@@ -165,9 +204,42 @@
                             </div>
                           </div>
                           <% end %>
+=======
+                         <div class="container" id="form">
+                           <%= form_for(Review.new, :url => user_reviews_path(@user)) do |revf| %>
+                            <div class='field' id="form">
+                              <%= revf.label :body, "Write Review" %> <br>
+                              <%= revf.text_area :body %> 
+                            </div>
+                            <div id="form">
+                                 <%= revf.label :rating, "Rating:" %> 
+                                 <%= revf.select :rating, [1,2,3,4,5] %>
+                            </div>
+                            <div class='action'>
+                              <%= revf.submit %>
+                            </div>
+                            <br><br>
+                          <% end %>
+                           <table class="table">
+                            <thead>
+                              <tr>
+                                <th> Review </th>
+                                <th> Rating </th>
+                              </tr>
+                            </thead>
+
+                            <% @user.reviews.each do |r| %>
+                            <tr>
+                              <td> <%= r.body %> </td>
+                              <td> <%= r.rating %> </td>
+                            <tr>
+                            <% end %>
+                           </table>
+>>>>>>> 779324234edd9f974b7c4e4ddd79e45329c0705c
 
                          </div>  
                     </div>
+               </div>
         </div>
      </div>
 </div>
