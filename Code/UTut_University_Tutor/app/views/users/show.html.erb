@@ -129,12 +129,13 @@
                             <tr>
                             <% end %>
                            </table>
-                           <h1 class="center" id="signup">Add Review:</h1>
+                           <h1 class="center" id="signup">Add Review for : <%= get_full_name(@user)%></h1>
                            <%= form_for(Review.new, :url => user_reviews_path(@user)) do |revf| %>
                             <div class="center">
                               <%= revf.text_area :body %> 
                             </div>
                                  <div class="center">
+                                      <h2>(1 being the lowest; 5 being the highest)</h2>
                                       <ul class="list-inline">
                                             <li class="radio" id="deets">
                                                 <%= revf.radio_button :rating, 1%>
