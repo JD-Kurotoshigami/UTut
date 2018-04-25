@@ -149,12 +149,10 @@
                             </div>
 
                             <div id="ongoing" class="tab-pane fade">
-                                 <% if your_ongoing_tutorials.count == 0%>
+                                 <% if your_ongoing_tutorials.count == 0 and not_your_ongoing_tutorials.count == 0%>
                                       <h1 id="signup"> User has no offered tutorials </h1>
                                  <% else %>
-                                      <% your_ongoing_tutorials.each do |t| %>
-                                           <% if t.tutor_id == current_user.id %>
-                                                <div class="col-md-6">
+                                    <div class="col-md-6">
                                                      <h1 id="signup">As Tutor</h1>
                                                      <table class="table">
                                                           <thead>
@@ -165,6 +163,9 @@
                                                                     <th>Action</th>
                                                                </tr>
                                                           </thead>
+                                                          <% your_ongoing_tutorials.each do |t| %>
+                                           
+                                                
                                                           <tr>
                                                               <td><%= link_to (get_tutee t), 'users/'+t.tutee_id.to_s %></td>
                                                               <td><%= (get_subject t) %></td>
@@ -174,9 +175,9 @@
                                                                  <%= link_to "Remove Tutee", 'tutorial/remove/'+(t.id).to_s, class: "btn btn-primary" %>
                                                               </td>
                                                           </tr>
+                                                          <% end %>
                                                     </table>
                                                   </div>
-                                           <% else %>
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-5">
                                                        <h1 id="signup">As Tutee</h1>
@@ -188,15 +189,16 @@
                                                                    <th>Schedule</th>
                                                                </tr>
                                                           </thead>
+                                                          <% not_your_ongoing_tutorials.each do |t| %>
                                                           <tr>
                                                               <td><%= link_to (get_tutor t), 'users/'+t.tutor_id.to_s %></td>
                                                               <td><%= (get_subject t) %></td>
                                                               <td><%= (stringify_schedule t)%></td>
                                                           </tr>
+                                                          <% end %>
                                                          </table>
                                                    </div>
-                                            <% end %>
-                                       <% end %>
+                                            
                                    <% end %>
                             </div>
 

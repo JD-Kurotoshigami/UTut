@@ -121,8 +121,16 @@ module TutorialHelper
 
      def your_ongoing_tutorials
           yours = Tutorial.where('tutor_id = ? AND tutee_id IS NOT NULL AND done == 0', current_user.id)
+          yours
+          #others = Tutorial.where('(tutee_id = ? AND done == 0)', current_user.id)
+          #yours + others
+     end
+
+     def not_your_ongoing_tutorials
+          #yours = Tutorial.where('tutor_id = ? AND tutee_id IS NOT NULL AND done == 0', current_user.id)
           others = Tutorial.where('(tutee_id = ? AND done == 0)', current_user.id)
-          yours + others
+          others
+          #yours + others
      end
 
      def your_finished_tutorials
