@@ -150,7 +150,7 @@ module TutorialHelper
 
      def will_conflict?(tut, user)
           #get all of the user's tutorials for that day
-          check = Tutorial.where("((tutor_id = ?) OR (tutee_id = ? AND done = 0 )) AND (day = ?)", user.id, user.id, tut.day)
+          check = Tutorial.where("((tutor_id = ?) OR (tutee_id = ? AND done = 0 )) AND (day = ?) AND (done = 0)", user.id, user.id, tut.day)
           con = false
           check.each do |t|
                if is_conflict? t, tut
