@@ -1,0 +1,30 @@
+Alpha Testing Summary:
+
+
+UI Improvements:
+     - Label “new password” box in change profile as “separate” from the change description box
+          - update profile separate change description and change password
+     - Review button for tutor should be on the same page as where the tutorial is listed (reviews should be for tutor+subject pairs, not just the tutor)
+     - Had to ask how to navigate to certain parts, like the review
+     - Update Profile not in the Profile tab
+     - fix header tabs
+     - unclutter tutorial tab i.e. move ongoing and finished to own profile
+     - Specific error messages (password requirements)
+
+Feature Improvement:
+     - Reviews should be allowed for only finished reviews, not ongoing reviews
+     - Verification when signing up
+
+Comment:
+     - Can be confusing to distinguish tasks as both a tutor or tutee
+
+
+
+
+
+
+
+
+
+
+
