@@ -117,55 +117,20 @@
                            <table>
                             <thead>
                               <tr>
-                                <th> Review </th>
+                                <th> Subject </th>
                                 <th> Rating </th>
+                                <th> Review </th>
                               </tr>
                             </thead>
 
                             <% @user.reviews.each do |r| %>
                             <tr>
+                              <td> <%= r.subject %> </td>
+                              <td> <%= r.rating %> / 5 </td>
                               <td> <%= r.body %> </td>
-                              <td> <%= r.rating %> </td>
                             <tr>
                             <% end %>
                            </table>
-                           <h1 class="center" id="signup">Add Review for : <%= get_full_name(@user)%></h1>
-                           <%= form_for(Review.new, :url => user_reviews_path(@user)) do |revf| %>
-                            <div class="center">
-                              <%= revf.text_area :body %> 
-                            </div>
-                                 <div class="center">
-                                      <h2>(1 being the lowest; 5 being the highest)</h2>
-                                      <ul class="list-inline">
-                                            <li class="radio" id="deets">
-                                                <%= revf.radio_button :rating, 1%>
-                                                <%= revf.label :rating, "1" %>
-                                            </li>
-                                            <li class="radio" id="deets">
-                                                <%= revf.radio_button :rating, 2%>
-                                                <%= revf.label :rating, "2" %>
-                                            </li>
-                                            <li class="radio" id="deets">
-                                                <%= revf.radio_button :rating, 3%>
-                                                <%= revf.label :rating, "3" %>
-                                            </li>
-                                            <li class="radio" id="deets">
-                                                <%= revf.radio_button :rating, 4%>
-                                                <%= revf.label :rating, "4" %>
-                                            </li>
-                                            <li class="radio" id="deets">
-                                                <%= revf.radio_button :rating, 5%>
-                                                <%= revf.label :rating, "5" %>
-                                            </li>
-                                      </ul>
-                                 </div>
-                            <div class="center">
-                            <div class='action'>
-                              <%= revf.submit %>
-                            </div>
-                          </div>
-                          <% end %>
-
                          </div>  
                     </div>
         </div>

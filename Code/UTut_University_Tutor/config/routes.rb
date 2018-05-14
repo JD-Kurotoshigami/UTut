@@ -7,9 +7,12 @@ Rails.application.routes.draw do
 
      resources :tutorial
      resources :users do
-          resources :reviews, only: :create
+          resources :reviews
      end
      resources :sessions
+
+     #get 'users/:user_id/reviews/:tutorial_id', to: 'reviews#new'
+     #post 'users/:user_id/reviews/:tutorial_id', to: 'reviews#create'
 
      root 'welcome#index'
      # get 'welcome/index'
@@ -35,6 +38,7 @@ Rails.application.routes.draw do
      get 'tutorial/remove/:id/', to: 'tutorial#remove_tutee'
      get 'tutorial/done/:id/', to: 'tutorial#tutorial_done'
      get 'tutorial/undo/:id/', to: 'tutorial#tutorial_undone'
+
 
      # post 'tutorial/search/result', to: 'tutorial#tut_request'
 

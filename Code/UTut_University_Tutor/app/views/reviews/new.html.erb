@@ -1,0 +1,45 @@
+<h1 class="center" id="signup">Add Review for : <%= get_full_name(@user)%></h1>
+<%= form_for(Review.new, :url => user_reviews_path(@user)) do |revf| %>
+	<div class="center">
+    	<%= revf.label :subject, "Subject", id: "deets1" %><br>
+        <%= revf.text_field :subject %> 
+       
+    </div>
+    <div class="center">
+    	<%= revf.label :body, "Review", id: "deets1" %><br>
+        <%= revf.text_area :body %> 
+    </div>
+
+
+    <div class="center" id="deets1">
+        (1 being the lowest; 5 being the highest)
+        <ul class="list-inline">
+        	
+            <li class="radio" id="deets">
+	            <%= revf.radio_button :rating, 1%>
+                <%= revf.label :rating, "1" %>
+            </li>
+            <li class="radio" id="deets">
+                <%= revf.radio_button :rating, 2%>
+                <%= revf.label :rating, "2" %>
+            </li>
+            <li class="radio" id="deets">
+                <%= revf.radio_button :rating, 3%>
+                <%= revf.label :rating, "3" %>
+            </li>
+            <li class="radio" id="deets">
+                <%= revf.radio_button :rating, 4%>
+                <%= revf.label :rating, "4" %>
+            </li>
+            <li class="radio" id="deets">
+                <%= revf.radio_button :rating, 5%>
+                <%= revf.label :rating, "5" %>
+            </li>
+        </ul>
+    </div>
+    <div class="center">
+        <div class='action'>
+            <%= revf.submit %>
+        </div>
+    </div>
+<% end %>

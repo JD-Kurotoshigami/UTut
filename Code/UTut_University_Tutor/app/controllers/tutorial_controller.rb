@@ -120,6 +120,7 @@ class TutorialController < ApplicationController
           @tutorial = Tutorial.new(tutorial_params)
           @tutorial.tutor_id = current_user.id
           @tutorial.done = 0
+          @tutorial.reviewed = 0
           if will_conflict? @tutorial, current_user
                @tutorial.errors.add(@tutorial.day, "scheduled tutorial offer conflicts with an existing tutorial.")
                render 'new'

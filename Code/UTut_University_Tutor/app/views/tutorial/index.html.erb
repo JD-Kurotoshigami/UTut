@@ -150,7 +150,7 @@
 
                             <div id="ongoing" class="tab-pane fade">
                                  <% if your_ongoing_tutorials.count == 0 and not_your_ongoing_tutorials.count == 0%>
-                                      <h1 id="signup"> User has no offered tutorials </h1>
+                                      <h1 id="signup"> You have no ongoing tutorials </h1>
                                  <% else %>
                                     <div class="col-md-6">
                                                      <h1 id="signup">As Tutor</h1>
@@ -204,7 +204,7 @@
 
                             <div id="done" class="tab-pane fade">
                             <% if your_finished_tutorials.count == 0%>
-                                 <h1 id="signup"> You haven't finished any tutorial </h1>
+                                 <h1 id="signup"> You have no finished tutorials </h1>
                             <% else %>
                                 <table class="table">
                                      <thead>
@@ -234,7 +234,11 @@
                                          <td><%= (stringify_schedule t)%></td>
                                          <td>
                                              <% if t.tutor_id != current_user.id %>
-
+                                                <% if t.reviewed != 1 %>
+                                                  <%= link_to "Add Review", new_user_review_path(t.tutor_id) %>
+                                                <% else %>
+                                                  Already reviewed.
+                                                <% end %>
                                              <% else %>
                                                 <%= link_to "Undo", 'tutorial/undo/'+(t.id).to_s, class: "btn btn-primary" %> 
                                              <% end %>

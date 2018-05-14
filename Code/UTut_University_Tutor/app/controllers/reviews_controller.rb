@@ -1,4 +1,15 @@
 class ReviewsController < ApplicationController
+     def index
+          redirect_to 'new'
+     end
+
+     def show
+          @user = User.find(params[:user_id])
+     end
+
+     def new
+          @user = User.find(params[:user_id])
+     end
 
      def create
           @user = User.find(params[:user_id])
@@ -15,7 +26,7 @@ class ReviewsController < ApplicationController
      private
 
      def review_params
-          params.require(:review).permit(:body, :rating)
+          params.require(:review).permit(:body, :rating, :subject)
      end
 
 end
