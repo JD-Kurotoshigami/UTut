@@ -13,14 +13,7 @@ UI Improvements:
 
 Feature Improvement:
      - Reviews should be allowed for only finished reviews, not ongoing reviews
-     >>>> FIX: 
-          + Add button to Finished Tutorial Table to "Add Review"
-          + Rework Reviews to add in Tutorial id as a field and use that as identifier for the review
-          + Review primary key will be by Tutor ID, Tutorial ID, Tutee ID
-
      - Verification when signing up
-     >>>> FIX: 
-          + ???
 
 Comment:
      - Can be confusing to distinguish tasks as both a tutor or tutee

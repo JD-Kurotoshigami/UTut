@@ -77,11 +77,11 @@ class TutorialController < ApplicationController
      def reject_tutee
           req = Request.where("id = ?", params[:id]).first
           tutorial = Tutorial.where("id = ?", req.tut_id).first
-          other_reqs = Request.where("tut_id = ? AND status = -1 AND tutee_id <> ?", tutorial.id, req.tutee_id)
-          other_reqs.each do |r|
-               r.status = 0
-               r.save
-          end
+          #other_reqs = Request.where("tut_id = ? AND status = -1 AND tutee_id <> ?", tutorial.id, req.tutee_id)
+          #other_reqs.each do |r|
+          #     r.status = 0
+          #     r.save
+          #end
           req.status = -1
           tutee = req.tutee_id
           tutorial.tutee_id = nil
