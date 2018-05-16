@@ -92,12 +92,12 @@ class TutorialController < ApplicationController
 
      def remove_tutee
           tut = Tutorial.where("id = ?", params[:id]).first
-          reqs = Request.where("tut_id = ?", tut.id)
+          #reqs = Request.where("tut_id = ?", tut.id)
           tut.tutee_id = nil
-          reqs.each do |r|
-               r.status = 0
-               r.save
-          end
+          #reqs.each do |r|
+          #     r.status = 0
+          #     r.save
+          #end
           tut.save
           redirect_to root_url
      end
